@@ -1,22 +1,24 @@
 "use client";
 
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { Header } from "@/components/Header";
-import { blogPosts } from "@/lib/blog-data";
+import { Badge } from "@/src/components/Badge";
+import { BlogSidebar } from "@/src/components/BlogSidebar";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+} from "@/src/components/Card";
+import { Header } from "@/src/components/Header";
+import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
+import { blogPosts } from "@/src/lib/blog-data";
 import Link from "next/link";
 
-export function TrendingPage() {
-  // Sort posts by views (most viewed first)
-  const trendingPosts = [...blogPosts].sort((a, b) => b.views - a.views);
+export function RecentPage() {
+  // Sort posts by date (newest first)
+  const recentPosts = [...blogPosts].sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
 
   return (
     <SidebarProvider>
@@ -28,14 +30,14 @@ export function TrendingPage() {
           <main className="flex-1 overflow-auto">
             <div className="container max-w-7xl mx-auto p-6">
               <div className="mb-8">
-                <h1 className="text-3xl font-bold">Trending Articles</h1>
+                <h1 className="text-3xl font-bold">Recent Articles</h1>
                 <p className="text-muted-foreground">
-                  Most popular articles in our tech community
+                  Latest articles from our developer community
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {trendingPosts.map((post) => (
+                {recentPosts.map((post) => (
                   <Card
                     key={post.id}
                     className="group hover:shadow-lg transition-all duration-300 overflow-hidden"

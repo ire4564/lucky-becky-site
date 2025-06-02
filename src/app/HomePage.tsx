@@ -1,29 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import {
-  TrendingUp,
-  Star,
-  Clock,
+  blogCategories,
+  blogPosts,
+  getFeaturedPosts,
+} from "@/src/lib/blog-data";
+import {
   ArrowRight,
-  Users,
   BookOpen,
+  Clock,
+  Star,
+  TrendingUp,
+  Users,
 } from "lucide-react";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { Header } from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { useState } from "react";
+import { Badge } from "../components/Badge";
+import { BlogSidebar } from "../components/BlogSidebar";
+import { Button } from "../components/Button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { blogPosts, getFeaturedPosts, blogCategories } from "@/lib/blog-data";
+} from "../components/Card";
+import { Header } from "../components/Header";
+import { Separator } from "../components/Separator";
+import { SidebarInset, SidebarProvider } from "../components/Sidebar";
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");

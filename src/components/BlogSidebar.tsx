@@ -1,18 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  BookOpen,
-  Home,
-  TrendingUp,
-  Star,
-  Settings,
-  Users,
-  BarChart3,
-  Calendar,
-  Bookmark,
-} from "lucide-react";
+import { Badge } from "@/src/components/Badge";
 import {
   Sidebar,
   SidebarContent,
@@ -25,9 +13,21 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-} from "@/components/ui/sidebar";
-import { blogCategories } from "@/lib/blog-data";
-import { Badge } from "@/components/ui/badge";
+} from "@/src/components/Sidebar";
+import { blogCategories } from "@/src/lib/blog-data";
+import {
+  BarChart3,
+  Bookmark,
+  BookOpen,
+  Calendar,
+  Home,
+  Settings,
+  Star,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const mainNavItems = [
   {

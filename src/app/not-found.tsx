@@ -1,13 +1,13 @@
+import { ArrowLeft, Home } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/src/components/ui/button";
+import { Button } from "../components/Button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Home, ArrowLeft } from "lucide-react";
+} from "../components/Card";
 
 export default function NotFound() {
   return (

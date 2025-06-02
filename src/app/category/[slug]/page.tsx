@@ -1,6 +1,6 @@
+import { blogCategories, getPostsByCategory } from "@/src/lib/blog-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogCategories, getPostsByCategory } from "@/lib/blog-data";
 import { CategoryPage } from "./CategoryPage";
 
 interface PageProps {

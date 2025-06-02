@@ -1,24 +1,21 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { Header } from "@/components/Header";
-import { searchPosts } from "@/lib/blog-data";
+import { Badge } from "@/src/components/Badge";
+import { BlogSidebar } from "@/src/components/BlogSidebar";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+} from "@/src/components/Card";
+import { Header } from "@/src/components/Header";
+import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
+import { blogPosts } from "@/src/lib/blog-data";
 import Link from "next/link";
 
-export function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q") || "";
-  const results = query ? searchPosts(query) : [];
+export function TrendingPage() {
+  // Sort posts by views (most viewed first)
+  const trendingPosts = [...blogPosts].sort((a, b) => b.views - a.views);
 
   return (
     <SidebarProvider>
@@ -29,18 +26,15 @@ export function SearchPage() {
 
           <main className="flex-1 overflow-auto">
             <div className="container max-w-7xl mx-auto p-6">
-              <div className="mb-6">
-                <h1 className="text-2xl font-bold">
-                  Search Results for "{query}"
-                </h1>
+              <div className="mb-8">
+                <h1 className="text-3xl font-bold">Trending Articles</h1>
                 <p className="text-muted-foreground">
-                  {results.length} article{results.length !== 1 ? "s" : ""}{" "}
-                  found
+                  Most popular articles in our tech community
                 </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {results.map((post) => (
+                {trendingPosts.map((post) => (
                   <Card
                     key={post.id}
                     className="group hover:shadow-lg transition-all duration-300 overflow-hidden"

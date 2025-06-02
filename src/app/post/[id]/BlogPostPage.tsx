@@ -1,30 +1,24 @@
 "use client";
 
-import Link from "next/link";
+import { Badge } from "@/src/components/Badge";
+import { BlogSidebar } from "@/src/components/BlogSidebar";
+import { Button } from "@/src/components/Button";
+import { Card, CardHeader, CardTitle } from "@/src/components/Card";
+import { Header } from "@/src/components/Header";
+import { Separator } from "@/src/components/Separator";
+import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
+import { blogPosts } from "@/src/lib/blog-data";
+import { BlogPost } from "@/types/blog";
 import {
   ArrowLeft,
+  Bookmark,
   Calendar,
   Clock,
   Eye,
   Heart,
   Share2,
-  Bookmark,
 } from "lucide-react";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { Header } from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { blogPosts } from "@/lib/blog-data";
-import { BlogPost } from "@/types/blog";
+import Link from "next/link";
 
 interface BlogPostPageProps {
   post: BlogPost;

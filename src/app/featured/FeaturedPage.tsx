@@ -1,25 +1,21 @@
 "use client";
 
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { BlogSidebar } from "@/components/BlogSidebar";
-import { Header } from "@/components/Header";
-import { BlogCategory, BlogPost } from "@/types/blog";
+import { Badge } from "@/src/components/Badge";
+import { BlogSidebar } from "@/src/components/BlogSidebar";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+} from "@/src/components/Card";
+import { Header } from "@/src/components/Header";
+import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
+import { getFeaturedPosts } from "@/src/lib/blog-data";
 import Link from "next/link";
 
-interface CategoryPageProps {
-  category: BlogCategory;
-  posts: BlogPost[];
-}
+export function FeaturedPage() {
+  const featuredPosts = getFeaturedPosts();
 
-export function CategoryPage({ category, posts }: CategoryPageProps) {
   return (
     <SidebarProvider>
       <div className="flex h-screen">
@@ -29,22 +25,15 @@ export function CategoryPage({ category, posts }: CategoryPageProps) {
 
           <main className="flex-1 overflow-auto">
             <div className="container max-w-7xl mx-auto p-6">
-              {/* Category Header */}
-              <div className="mb-8 space-y-4">
-                <div className="flex items-center gap-4">
-                  <span className="text-4xl">{category.icon}</span>
-                  <div>
-                    <h1 className="text-3xl font-bold">{category.name}</h1>
-                    <p className="text-lg text-muted-foreground">
-                      {category.description}
-                    </p>
-                  </div>
-                </div>
+              <div className="mb-8">
+                <h1 className="text-3xl font-bold">Featured Articles</h1>
+                <p className="text-muted-foreground">
+                  Handpicked articles from our top contributors
+                </p>
               </div>
 
-              {/* Articles Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {posts.map((post) => (
+                {featuredPosts.map((post) => (
                   <Card
                     key={post.id}
                     className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
