@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import {
   Grid,
@@ -6,15 +8,15 @@ import {
   ArrowUpDown,
   Filter,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/src/components/ui/button";
+import { Badge } from "@/src/components/ui/badge";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/src/components/ui/select";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -22,11 +24,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/src/components/ui/dropdown-menu";
 import { BlogCard } from "./BlogCard";
-import { BlogPost } from "@/types/blog";
-import { blogCategories } from "@/lib/blog-data";
-import { cn } from "@/lib/utils";
+import { BlogPost } from "@/src/types/blog";
+import { blogCategories } from "@/src/lib/blog-data";
+import { cn } from "@/src/lib/utils";
 
 interface BlogListingProps {
   posts: BlogPost[];
