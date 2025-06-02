@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getPostById } from "@/src/lib/blog-data";
+import { getPostById } from "@/lib/blog-data";
 import { BlogPostPage } from "./BlogPostPage";
 
 interface PageProps {
