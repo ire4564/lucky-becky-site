@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowLeft,
   Calendar,
@@ -10,29 +9,22 @@ import {
   Heart,
   Share2,
   Bookmark,
-  User,
 } from "lucide-react";
-import { SidebarProvider, SidebarInset } from "@/src/components/ui/sidebar";
-import { BlogSidebar } from "@/src/components/BlogSidebar";
-import { Header } from "@/src/components/Header";
-import { BlogCard } from "@/src/components/BlogCard";
-import { Button } from "@/src/components/ui/button";
-import { Badge } from "@/src/components/ui/badge";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/src/components/ui/avatar";
-import { Separator } from "@/src/components/ui/separator";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { BlogSidebar } from "@/components/BlogSidebar";
+import { Header } from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { blogPosts } from "@/src/lib/blog-data";
-import { BlogPost } from "@/src/types/blog";
+} from "@/components/ui/card";
+import { blogPosts } from "@/lib/blog-data";
+import { BlogPost } from "@/types/blog";
 
 interface BlogPostPageProps {
   post: BlogPost;
@@ -103,15 +95,11 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                   {/* Meta Information */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-4 border-y">
                     <div className="flex items-center gap-4">
-                      <Avatar className="h-12 w-12">
-                        <AvatarImage
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                        />
-                        <AvatarFallback>
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <span className="text-lg font-semibold text-primary">
                           {post.author.name.slice(0, 2)}
-                        </AvatarFallback>
-                      </Avatar>
+                        </span>
+                      </div>
                       <div>
                         <p className="font-semibold">{post.author.name}</p>
                         <p className="text-sm text-muted-foreground">
@@ -157,17 +145,15 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
 
                 {/* Featured Image */}
                 <div className="relative rounded-xl overflow-hidden">
-                  <Image
+                  <img
                     src={post.thumbnail}
                     alt={post.title}
-                    width={800}
-                    height={400}
                     className="w-full h-64 sm:h-80 lg:h-96 object-cover"
                   />
                 </div>
 
                 {/* Article Content */}
-                <div className="prose prose-lg max-w-none dark:prose-invert">
+                <div className="prose prose-lg max-w-none">
                   <div className="whitespace-pre-wrap leading-relaxed">
                     {post.content}
                   </div>
@@ -223,41 +209,6 @@ function exampleFunction() {
                     </p>
                   </div>
                 </div>
-
-                {/* Author Bio */}
-                <Card className="bg-muted/50">
-                  <CardContent className="p-6">
-                    <div className="flex gap-4">
-                      <Avatar className="h-16 w-16">
-                        <AvatarImage
-                          src={post.author.avatar}
-                          alt={post.author.name}
-                        />
-                        <AvatarFallback>
-                          {post.author.name.slice(0, 2)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-1">
-                          {post.author.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-2">
-                          {post.author.role}
-                        </p>
-                        <p className="text-sm leading-relaxed">
-                          Passionate about technology and sharing knowledge with
-                          the developer community. With years of experience in
-                          the field, they love to explore new technologies and
-                          best practices.
-                        </p>
-                        <Button variant="outline" size="sm" className="mt-3">
-                          <User className="mr-2 h-4 w-4" />
-                          View Profile
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </article>
 
               {/* Related Articles */}
@@ -275,7 +226,28 @@ function exampleFunction() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {relatedPosts.map((relatedPost) => (
-                      <BlogCard key={relatedPost.id} post={relatedPost} />
+                      <Card
+                        key={relatedPost.id}
+                        className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
+                      >
+                        <div className="relative">
+                          <img
+                            src={relatedPost.thumbnail}
+                            alt={relatedPost.title}
+                            className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <CardHeader className="pb-3">
+                          <CardTitle className="text-sm leading-tight line-clamp-2">
+                            <Link
+                              href={`/post/${relatedPost.id}`}
+                              className="hover:text-primary transition-colors"
+                            >
+                              {relatedPost.title}
+                            </Link>
+                          </CardTitle>
+                        </CardHeader>
+                      </Card>
                     ))}
                   </div>
                 </section>
