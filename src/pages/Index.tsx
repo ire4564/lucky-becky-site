@@ -1,38 +1,287 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  TrendingUp,
+  Star,
+  Clock,
+  ArrowRight,
+  Users,
+  BookOpen,
+} from "lucide-react";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { BlogSidebar } from "@/components/BlogSidebar";
+import { Header } from "@/components/Header";
+import { BlogCard } from "@/components/BlogCard";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { blogPosts, getFeaturedPosts, blogCategories } from "@/lib/blog-data";
+
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const featuredPosts = getFeaturedPosts();
+  const recentPosts = blogPosts.slice(0, 6);
+  const trendingPosts = [...blogPosts]
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 4);
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    // In a real app, this would trigger search functionality
+    console.log("Searching for:", query);
+  };
+
+  const stats = [
+    {
+      title: "Total Articles",
+      value: blogPosts.length,
+      icon: BookOpen,
+      trend: "+12%",
+    },
+    {
+      title: "Categories",
+      value: blogCategories.length,
+      icon: TrendingUp,
+      trend: "+3%",
+    },
+    {
+      title: "Authors",
+      value: "15",
+      icon: Users,
+      trend: "+8%",
+    },
+    {
+      title: "Monthly Views",
+      value: "125k",
+      icon: Star,
+      trend: "+24%",
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
+    <SidebarProvider>
+      <div className="flex h-screen">
+        <BlogSidebar />
+        <SidebarInset>
+          <Header onSearch={handleSearch} />
+
+          <main className="flex-1 overflow-auto">
+            <div className="container max-w-7xl mx-auto p-6 space-y-8">
+              {/* Hero Section */}
+              <section className="relative rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-8 text-white overflow-hidden">
+                <div className="relative z-10">
+                  <h1 className="text-4xl font-bold mb-4">
+                    Welcome to TechBlog
+                  </h1>
+                  <p className="text-xl text-blue-100 mb-6 max-w-2xl">
+                    Discover the latest insights, tutorials, and best practices
+                    in software development. Join our community of developers
+                    sharing knowledge and building the future.
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Button
+                      size="lg"
+                      className="bg-white text-blue-600 hover:bg-blue-50"
+                    >
+                      Explore Articles
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-white text-white hover:bg-white/10"
+                    >
+                      Write Your First Post
+                    </Button>
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full"></div>
+              </section>
+
+              {/* Stats Section */}
+              <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {stats.map((stat, index) => (
+                  <Card key={index} className="relative overflow-hidden">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-muted-foreground">
+                            {stat.title}
+                          </p>
+                          <p className="text-2xl font-bold">{stat.value}</p>
+                          <p className="text-xs text-green-600 font-medium">
+                            {stat.trend} from last month
+                          </p>
+                        </div>
+                        <div className="p-3 bg-primary/10 rounded-full">
+                          <stat.icon className="h-6 w-6 text-primary" />
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </section>
+
+              {/* Featured Articles */}
+              <section className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <Star className="h-6 w-6 text-yellow-500" />
+                      Featured Articles
+                    </h2>
+                    <p className="text-muted-foreground">
+                      Handpicked articles from our top contributors
+                    </p>
+                  </div>
+                  <Button variant="outline" asChild>
+                    <Link to="/featured">
+                      View All
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {featuredPosts.slice(0, 2).map((post) => (
+                    <BlogCard key={post.id} post={post} variant="featured" />
+                  ))}
+                </div>
+              </section>
+
+              <Separator />
+
+              {/* Two Column Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Main Content - Recent Articles */}
+                <div className="lg:col-span-2 space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      <Clock className="h-6 w-6 text-blue-500" />
+                      Recent Articles
+                    </h2>
+                    <Button variant="outline" asChild>
+                      <Link to="/recent">View All</Link>
+                    </Button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {recentPosts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Sidebar Content */}
+                <div className="space-y-6">
+                  {/* Trending Articles */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <TrendingUp className="h-5 w-5 text-red-500" />
+                        Trending Now
+                      </CardTitle>
+                      <CardDescription>
+                        Most popular articles this week
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {trendingPosts.map((post, index) => (
+                        <div key={post.id} className="flex gap-3">
+                          <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-sm font-bold text-primary">
+                            {index + 1}
+                          </div>
+                          <div className="min-w-0">
+                            <h4 className="font-medium text-sm leading-tight line-clamp-2">
+                              <Link
+                                to={`/post/${post.id}`}
+                                className="hover:text-primary transition-colors"
+                              >
+                                {post.title}
+                              </Link>
+                            </h4>
+                            <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                              <span>{post.views.toLocaleString()} views</span>
+                              <span>•</span>
+                              <span>{post.category}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+
+                  {/* Popular Categories */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Popular Categories</CardTitle>
+                      <CardDescription>
+                        Explore topics by category
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {blogCategories.slice(0, 5).map((category) => (
+                          <Link
+                            key={category.id}
+                            to={`/category/${category.slug}`}
+                            className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors group"
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="text-xl">{category.icon}</span>
+                              <div>
+                                <p className="font-medium group-hover:text-primary transition-colors">
+                                  {category.name}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  {category.description}
+                                </p>
+                              </div>
+                            </div>
+                            <Badge variant="secondary">
+                              {category.postCount}
+                            </Badge>
+                          </Link>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Newsletter Signup */}
+                  <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+                    <CardHeader>
+                      <CardTitle>Stay Updated</CardTitle>
+                      <CardDescription>
+                        Get the latest articles delivered to your inbox
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        <Button className="w-full">
+                          Subscribe to Newsletter
+                        </Button>
+                        <p className="text-xs text-muted-foreground text-center">
+                          Join 10,000+ developers in our community
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </main>
+        </SidebarInset>
       </div>
-    </div>
+    </SidebarProvider>
   );
 };
 
