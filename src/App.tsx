@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import BlogPost from "./pages/BlogPost";
 import Category from "./pages/Category";
 import Featured from "./pages/Featured";
+import Recent from "./pages/Recent";
+import Trending from "./pages/Trending";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/post/:id" element={<BlogPost />} />
           <Route path="/category/:slug" element={<Category />} />
           <Route path="/featured" element={<Featured />} />
+          <Route path="/recent" element={<Recent />} />
+          <Route path="/trending" element={<Trending />} />
           <Route path="/search" element={<Search />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
