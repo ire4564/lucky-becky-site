@@ -1,4 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   BookOpen,
   Home,
@@ -8,7 +11,6 @@ import {
   Users,
   BarChart3,
   Calendar,
-  Tag,
   Bookmark,
 } from "lucide-react";
 import {
@@ -23,9 +25,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-} from "@/components/ui/sidebar";
-import { blogCategories } from "@/lib/blog-data";
-import { Badge } from "@/components/ui/badge";
+} from "@/src/components/ui/sidebar";
+import { blogCategories } from "@/src/lib/blog-data";
+import { Badge } from "@/src/components/ui/badge";
 
 const mainNavItems = [
   {
@@ -69,7 +71,7 @@ const userItems = [
 ];
 
 export function BlogSidebar() {
-  const location = useLocation();
+  const pathname = usePathname();
 
   return (
     <Sidebar variant="inset">
@@ -77,7 +79,7 @@ export function BlogSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link to="/">
+              <Link href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <BookOpen className="size-4" />
                 </div>
@@ -99,11 +101,8 @@ export function BlogSidebar() {
             <SidebarMenu>
               {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={location.pathname === item.url}
-                  >
-                    <Link to={item.url}>
+                  <SidebarMenuButton asChild isActive={pathname === item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -125,11 +124,9 @@ export function BlogSidebar() {
                 <SidebarMenuItem key={category.id}>
                   <SidebarMenuButton
                     asChild
-                    isActive={
-                      location.pathname === `/category/${category.slug}`
-                    }
+                    isActive={pathname === `/category/${category.slug}`}
                   >
-                    <Link to={`/category/${category.slug}`}>
+                    <Link href={`/category/${category.slug}`}>
                       <span className="text-base mr-1">{category.icon}</span>
                       <span>{category.name}</span>
                       <Badge variant="secondary" className="ml-auto text-xs">
@@ -152,11 +149,8 @@ export function BlogSidebar() {
             <SidebarMenu>
               {userItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={location.pathname === item.url}
-                  >
-                    <Link to={item.url}>
+                  <SidebarMenuButton asChild isActive={pathname === item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -172,7 +166,7 @@ export function BlogSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link to="/settings">
+              <Link href="/settings">
                 <Settings />
                 <span>Settings</span>
               </Link>

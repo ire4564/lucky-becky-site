@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
 import { Clock, Eye, Heart, Calendar, User } from "lucide-react";
 import {
   Card,
@@ -7,12 +10,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BlogPost } from "@/types/blog";
-import { cn } from "@/lib/utils";
+} from "@/src/components/ui/card";
+import { Badge } from "@/src/components/ui/badge";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/src/components/ui/avatar";
+import { BlogPost } from "@/src/types/blog";
+import { cn } from "@/src/lib/utils";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -49,9 +55,11 @@ export function BlogCard({
         )}
       >
         <div className="relative">
-          <img
+          <Image
             src={post.thumbnail}
             alt={post.title}
+            width={600}
+            height={300}
             className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute top-4 left-4">
@@ -77,7 +85,7 @@ export function BlogCard({
           </div>
           <CardTitle className="text-xl leading-tight">
             <Link
-              to={`/post/${post.id}`}
+              href={`/post/${post.id}`}
               className="hover:text-primary transition-colors"
             >
               {post.title}
@@ -125,9 +133,11 @@ export function BlogCard({
       >
         <CardContent className="p-4">
           <div className="flex gap-4">
-            <img
+            <Image
               src={post.thumbnail}
               alt={post.title}
+              width={80}
+              height={80}
               className="w-20 h-20 object-cover rounded-md group-hover:scale-105 transition-transform duration-200"
             />
             <div className="flex-1 min-w-0">
@@ -136,7 +146,7 @@ export function BlogCard({
               </Badge>
               <h3 className="font-semibold text-sm leading-tight mb-1 line-clamp-2">
                 <Link
-                  to={`/post/${post.id}`}
+                  href={`/post/${post.id}`}
                   className="hover:text-primary transition-colors"
                 >
                   {post.title}
@@ -164,9 +174,11 @@ export function BlogCard({
       )}
     >
       <div className="relative">
-        <img
+        <Image
           src={post.thumbnail}
           alt={post.title}
+          width={400}
+          height={200}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div className="absolute top-3 right-3">
@@ -183,7 +195,7 @@ export function BlogCard({
         </div>
         <CardTitle className="text-lg leading-tight line-clamp-2">
           <Link
-            to={`/post/${post.id}`}
+            href={`/post/${post.id}`}
             className="hover:text-primary transition-colors"
           >
             {post.title}
