@@ -10,25 +10,20 @@ import {
   Users,
   BookOpen,
 } from "lucide-react";
-import { SidebarProvider, SidebarInset } from "@/src/components/ui/sidebar";
-import { BlogSidebar } from "@/src/components/BlogSidebar";
-import { Header } from "@/src/components/Header";
-import { BlogCard } from "@/src/components/BlogCard";
-import { Button } from "@/src/components/ui/button";
-import { Badge } from "@/src/components/ui/badge";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { BlogSidebar } from "@/components/BlogSidebar";
+import { Header } from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Separator } from "@/src/components/ui/separator";
-import {
-  blogPosts,
-  getFeaturedPosts,
-  blogCategories,
-} from "@/src/lib/blog-data";
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { blogPosts, getFeaturedPosts, blogCategories } from "@/lib/blog-data";
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -158,130 +153,95 @@ export function HomePage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {featuredPosts.slice(0, 2).map((post) => (
-                    <BlogCard key={post.id} post={post} variant="featured" />
+                    <Card
+                      key={post.id}
+                      className="overflow-hidden group hover:shadow-lg transition-all duration-300"
+                    >
+                      <div className="relative">
+                        <img
+                          src={post.thumbnail}
+                          alt={post.title}
+                          className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <Badge
+                            variant="secondary"
+                            className="bg-background/80 backdrop-blur-sm"
+                          >
+                            Featured
+                          </Badge>
+                        </div>
+                        <div className="absolute top-4 right-4">
+                          <Badge className="bg-primary/80 backdrop-blur-sm">
+                            {post.category}
+                          </Badge>
+                        </div>
+                      </div>
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-xl leading-tight">
+                          <Link
+                            href={`/post/${post.id}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {post.title}
+                          </Link>
+                        </CardTitle>
+                        <CardDescription className="text-base line-clamp-2">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
                   ))}
                 </div>
               </section>
 
               <Separator />
 
-              {/* Two Column Layout */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Main Content - Recent Articles */}
-                <div className="lg:col-span-2 space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                      <Clock className="h-6 w-6 text-blue-500" />
-                      Recent Articles
-                    </h2>
-                    <Button variant="outline" asChild>
-                      <Link href="/recent">View All</Link>
-                    </Button>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {recentPosts.map((post) => (
-                      <BlogCard key={post.id} post={post} />
-                    ))}
-                  </div>
+              {/* Simple Recent Articles Grid */}
+              <section className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Clock className="h-6 w-6 text-blue-500" />
+                    Recent Articles
+                  </h2>
+                  <Button variant="outline" asChild>
+                    <Link href="/recent">View All</Link>
+                  </Button>
                 </div>
 
-                {/* Sidebar Content */}
-                <div className="space-y-6">
-                  {/* Trending Articles */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <TrendingUp className="h-5 w-5 text-red-500" />
-                        Trending Now
-                      </CardTitle>
-                      <CardDescription>
-                        Most popular articles this week
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      {trendingPosts.map((post, index) => (
-                        <div key={post.id} className="flex gap-3">
-                          <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center text-sm font-bold text-primary">
-                            {index + 1}
-                          </div>
-                          <div className="min-w-0">
-                            <h4 className="font-medium text-sm leading-tight line-clamp-2">
-                              <Link
-                                href={`/post/${post.id}`}
-                                className="hover:text-primary transition-colors"
-                              >
-                                {post.title}
-                              </Link>
-                            </h4>
-                            <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
-                              <span>{post.views.toLocaleString()} views</span>
-                              <span>•</span>
-                              <span>{post.category}</span>
-                            </div>
-                          </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {recentPosts.map((post) => (
+                    <Card
+                      key={post.id}
+                      className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    >
+                      <div className="relative">
+                        <img
+                          src={post.thumbnail}
+                          alt={post.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-3 right-3">
+                          <Badge>{post.category}</Badge>
                         </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-
-                  {/* Popular Categories */}
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Popular Categories</CardTitle>
-                      <CardDescription>
-                        Explore topics by category
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        {blogCategories.slice(0, 5).map((category) => (
+                      </div>
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-lg leading-tight line-clamp-2">
                           <Link
-                            key={category.id}
-                            href={`/category/${category.slug}`}
-                            className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors group"
+                            href={`/post/${post.id}`}
+                            className="hover:text-primary transition-colors"
                           >
-                            <div className="flex items-center gap-3">
-                              <span className="text-xl">{category.icon}</span>
-                              <div>
-                                <p className="font-medium group-hover:text-primary transition-colors">
-                                  {category.name}
-                                </p>
-                                <p className="text-xs text-muted-foreground">
-                                  {category.description}
-                                </p>
-                              </div>
-                            </div>
-                            <Badge variant="secondary">
-                              {category.postCount}
-                            </Badge>
+                            {post.title}
                           </Link>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Newsletter Signup */}
-                  <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-                    <CardHeader>
-                      <CardTitle>Stay Updated</CardTitle>
-                      <CardDescription>
-                        Get the latest articles delivered to your inbox
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-3">
-                        <Button className="w-full">
-                          Subscribe to Newsletter
-                        </Button>
-                        <p className="text-xs text-muted-foreground text-center">
-                          Join 10,000+ developers in our community
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                        </CardTitle>
+                        <CardDescription className="line-clamp-3">
+                          {post.excerpt}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
                 </div>
-              </div>
+              </section>
             </div>
           </main>
         </SidebarInset>
