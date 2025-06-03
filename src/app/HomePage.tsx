@@ -142,96 +142,14 @@ export function HomePage() {
           <Header onSearch={handleSearch} />
 
           <main className="flex-1 overflow-auto">
-            <div className="container max-w-7xl mx-auto p-6 space-y-8">
-              {/* Hero Carousel Section */}
-              <section className="relative rounded-2xl overflow-hidden">
-                <div className="overflow-hidden" ref={emblaRef}>
-                  <div className="flex">
-                    {heroBanners.map((banner) => (
-                      <div key={banner.id} className="flex-[0_0_100%] min-w-0">
-                        <div
-                          className={`relative bg-gradient-to-r ${banner.background} p-8 text-white overflow-hidden min-h-[300px] flex items-center`}
-                        >
-                          <div className="relative z-10 w-full">
-                            <h1 className="text-4xl font-bold mb-2">
-                              {banner.title}
-                            </h1>
-                            <p className="text-lg text-white/80 mb-4 font-medium">
-                              {banner.subtitle}
-                            </p>
-                            <p className="text-xl text-white/90 mb-6 max-w-2xl">
-                              {banner.description}
-                            </p>
-                            <div className="flex flex-wrap gap-4">
-                              <Button
-                                size="lg"
-                                className="bg-white text-gray-800 hover:bg-white/90"
-                                asChild
-                              >
-                                <Link href={banner.buttonAction}>
-                                  {banner.buttonText}
-                                  <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                          <div className="absolute inset-0 bg-black/20"></div>
-                          <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
-                          <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full"></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Navigation arrows */}
-                <button
-                  onClick={scrollPrev}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="h-6 w-6 text-white" />
-                </button>
-                <button
-                  onClick={scrollNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="h-6 w-6 text-white" />
-                </button>
-
-                {/* Slide indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-                  {heroBanners.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => emblaApi?.scrollTo(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        currentSlide === index
-                          ? "bg-white w-8"
-                          : "bg-white/50 hover:bg-white/70"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </section>
-
+            <div className="container max-w-7xl mx-auto px-6 pb-6 space-y-0.5">
               {/* Traditional Lighting Swiper Section */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                      🏮 전통 조명
-                    </h2>
-                    <p className="text-muted-foreground">
-                      한국의 아름다운 전통 조명을 만나보세요
-                    </p>
-                  </div>
+                  <div></div>
                 </div>
                 <TraditionalLightingSwiper />
               </section>
-
               {/* Stats Section */}
               <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {stats.map((stat, index) => (
