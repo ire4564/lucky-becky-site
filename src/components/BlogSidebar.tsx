@@ -101,8 +101,8 @@ export function BlogSidebar() {
                   <SidebarMenuButton asChild isActive={pathname === item.url}>
                     <Link href={item.url}>
                       <item.icon />
-                      <span>{item.title}</span>
                     </Link>
+                    <span>{item.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
