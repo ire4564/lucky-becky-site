@@ -73,7 +73,7 @@ export function TraditionalLightingSwiper() {
                 <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 opacity-60"></div>
 
                 {/* Content Container */}
-                <div className="relative z-10 h-full flex items-center px-12 mt-3.5">
+                <div className="relative z-10 h-full flex items-center gap-0.5 mx-3.5 my-0 -mb-1 px-12 pb-10">
                   {/* Left Text Content */}
                   <div className="w-1/2 space-y-3">
                     <h2 className="text-4xl font-bold text-white leading-tight tracking-wide">
