@@ -71,6 +71,7 @@ export function TraditionalLightingSwiper() {
                 {/* Wooden table surface */}
                 <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-amber-900 via-amber-800 to-amber-700"></div>
                 <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 opacity-60"></div>
+
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex items-center px-12">
                   {/* Left Text Content */}
