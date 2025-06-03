@@ -87,28 +87,9 @@ export function HomePage() {
                 </div>
                 <TraditionalLightingSwiper />
               </section>
-              {/* Stats Section */}
-              <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5.5">
-                {stats.map((stat, index) => (
-                  <Card key={index} className="relative overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-medium text-muted-foreground">
-                            {stat.title}
-                          </p>
-                          <p className="text-2xl font-bold">{stat.value}</p>
-                          <p className="text-xs text-green-600 font-medium">
-                            {stat.trend} from last month
-                          </p>
-                        </div>
-                        <div className="p-3 bg-primary/10 rounded-full">
-                          <stat.icon className="h-6 w-6 text-primary" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+              {/* Shortcut Menu Section */}
+              <section className="mt-5.5">
+                <ShortcutMenu />
               </section>
 
               {/* Featured Articles */}
