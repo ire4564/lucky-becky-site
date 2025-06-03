@@ -178,58 +178,62 @@ export function BlogSidebar() {
       <SidebarFooter>
         <div className="flex flex-col items-center justify-center p-4 space-y-3">
           {/* QR Code */}
-          <div className="bg-white p-3 rounded-lg shadow-sm border">
-            <div className="w-20 h-20 bg-white relative grid grid-cols-10 grid-rows-10 gap-0">
-              {/* Create a more realistic QR code pattern */}
-              {[
-                // Row 1
-                1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-                // Row 2
-                1, 0, 0, 0, 0, 0, 1, 0, 0, 1,
-                // Row 3
-                1, 0, 1, 1, 1, 0, 1, 1, 1, 0,
-                // Row 4
-                1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
-                // Row 5
-                1, 0, 1, 1, 1, 0, 1, 1, 0, 0,
-                // Row 6
-                1, 0, 0, 0, 0, 0, 1, 0, 1, 1,
-                // Row 7
-                1, 1, 1, 1, 1, 1, 1, 0, 1, 0,
-                // Row 8
-                0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-                // Row 9
-                1, 0, 1, 1, 0, 1, 1, 1, 0, 1,
-                // Row 10
-                1, 1, 0, 1, 1, 0, 1, 0, 1, 1,
-              ].map((cell, index) => (
-                <div
-                  key={index}
-                  className={`w-2 h-2 ${cell === 1 ? "bg-black" : "bg-white"}`}
-                />
-              ))}
+          <div className="bg-white p-2 rounded-lg shadow-sm border">
+            <div className="w-24 h-24 bg-white relative">
+              {/* Create a 17x17 grid pattern like a real QR code */}
+              <div className="grid grid-cols-17 grid-rows-17 w-full h-full">
+                {/* QR Code pattern based on the reference image */}
+                {[
+                  1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,
+                  1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0,1,
+                  1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,
+                  1,0,1,1,1,0,1,0,1,1,0,0,1,1,1,0,1,
+                  1,0,1,1,1,0,1,0,0,1,1,0,1,1,1,0,1,
+                  1,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,
+                  1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,
+                  0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
+                  1,0,1,1,0,1,1,1,0,1,1,1,0,1,1,0,1,
+                  0,1,0,1,1,0,0,0,1,0,1,0,1,0,0,1,0,
+                  1,1,1,0,1,1,1,1,0,1,0,1,1,1,0,1,1,
+                  0,0,1,1,0,0,0,1,1,0,1,1,0,0,1,0,0,
+                  1,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,
+                  0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,1,0,
+                  1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,0,1,
+                  1,0,0,0,0,0,1,0,0,1,1,0,1,1,0,1,1,
+                  1,0,1,1,1,0,1,0,1,0,1,1,0,1,1,0,1,
+                ].map((cell, index) => (
+                  <div
+                    key={index}
+                    className={`aspect-square ${cell === 1 ? 'bg-black' : 'bg-white'}`}
+                  />
+                ))}
+              </div>
 
-              {/* Corner detection patterns */}
-              <div className="absolute top-0 left-0 w-6 h-6 bg-black">
-                <div className="absolute top-1 left-1 w-4 h-4 bg-white">
-                  <div className="absolute top-1 left-1 w-2 h-2 bg-black"></div>
+              {/* Position detection patterns (corner squares) - overlay on top */}
+              <div className="absolute top-0 left-0 w-7 h-7 bg-black border border-black">
+                <div className="absolute top-1 left-1 w-5 h-5 bg-white">
+                  <div className="absolute top-1 left-1 w-3 h-3 bg-black"></div>
                 </div>
               </div>
-              <div className="absolute top-0 right-0 w-6 h-6 bg-black">
-                <div className="absolute top-1 right-1 w-4 h-4 bg-white">
-                  <div className="absolute top-1 right-1 w-2 h-2 bg-black"></div>
+              <div className="absolute top-0 right-0 w-7 h-7 bg-black border border-black">
+                <div className="absolute top-1 right-1 w-5 h-5 bg-white">
+                  <div className="absolute top-1 right-1 w-3 h-3 bg-black"></div>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 w-6 h-6 bg-black">
-                <div className="absolute bottom-1 left-1 w-4 h-4 bg-white">
-                  <div className="absolute bottom-1 left-1 w-2 h-2 bg-black"></div>
+              <div className="absolute bottom-0 left-0 w-7 h-7 bg-black border border-black">
+                <div className="absolute bottom-1 left-1 w-5 h-5 bg-white">
+                  <div className="absolute bottom-1 left-1 w-3 h-3 bg-black"></div>
+                </div>
+              </div>
+
+              {/* Alignment pattern in bottom right area */}
+              <div className="absolute bottom-2 right-2 w-5 h-5 bg-black">
+                <div className="absolute top-1 left-1 w-3 h-3 bg-white">
+                  <div className="absolute top-1 left-1 w-1 h-1 bg-black"></div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Scan Me Button */}
-          <div className="relative">
             <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
               SCAN ME!
             </button>
