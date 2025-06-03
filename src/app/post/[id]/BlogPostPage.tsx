@@ -11,12 +11,13 @@ import { blogPosts } from "@/src/lib/blog-data";
 import { BlogPost } from "@/types/blog";
 import {
   ArrowLeft,
-  Bookmark,
   Calendar,
   Clock,
   Eye,
   Heart,
   Share2,
+  User,
+  Tag,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -30,10 +31,10 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
     .slice(0, 3);
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString("en-US", {
+    return new Date(date).toLocaleDateString("ko-KR", {
       year: "numeric",
-      month: "long",
-      day: "numeric",
+      month: "2-digit",
+      day: "2-digit",
     });
   };
 
@@ -51,198 +52,182 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
         <SidebarInset>
           <Header />
 
-          <main className="flex-1 overflow-auto">
-            <div className="container max-w-4xl mx-auto p-6">
-              {/* Back Button */}
-              <div className="mb-6">
-                <Button variant="ghost" asChild className="mb-4">
-                  <Link href="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Articles
-                  </Link>
-                </Button>
+          <main className="flex-1 overflow-auto bg-gray-50">
+            <div className="container max-w-7xl mx-auto p-6">
+              {/* Breadcrumb */}
+              <div className="flex items-center gap-2 text-sm text-gray-600 mb-6">
+                <Link href="/" className="hover:text-blue-600">
+                  카테고리
+                </Link>
+                <span>·</span>
+                <span>{post.category}</span>
+                <span className="text-blue-600">›</span>
               </div>
 
-              {/* Article Header */}
-              <article className="space-y-8">
-                <header className="space-y-6">
-                  {/* Category and Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="text-sm px-3 py-1">{post.category}</Badge>
-                    {post.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-sm">
-                        {tag}
-                      </Badge>
-                    ))}
+              {/* Main Content Layout */}
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Left: Thumbnail Image */}
+                  <div className="relative aspect-[4/3] lg:aspect-auto">
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
-                  {/* Title */}
-                  <h1 className="text-4xl font-bold leading-tight lg:text-5xl">
-                    {post.title}
-                  </h1>
-
-                  {/* Excerpt */}
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Meta Information */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-4 border-y">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                        <span className="text-lg font-semibold text-primary">
-                          {post.author.name.slice(0, 2)}
+                  {/* Right: Project Information */}
+                  <div className="p-8 lg:p-12 flex flex-col">
+                    {/* Status Badge */}
+                    <div className="flex items-center gap-2 mb-6">
+                      <div
+                        className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-white"
+                        style={{ backgroundColor: "rgba(207, 207, 207, 1)" }}
+                      >
+                        <span>🎁 </span>
+                        <span style={{ color: "rgba(97, 97, 97, 1)" }}>
+                          Frontend
                         </span>
                       </div>
-                      <div>
-                        <p className="font-semibold">{post.author.name}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {post.author.role}
-                        </p>
+                    </div>
+
+                    {/* Title and Description */}
+                    <div className="mb-8">
+                      <h2 className="text-2xl font-bold text-gray-900 leading-8 mb-2">
+                        프로젝트 소개,
+                        <br />
+                        여기는 제목을 적는 곳입니다
+                        <br />
+                      </h2>
+                      <div className="text-gray-700 leading-relaxed whitespace-pre-wrap mt-2">
+                        여기는 소제목을 적는 곳이에요 하나둘
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        {formatDate(post.publishedAt)}
+                    <Separator className="my-6" />
+
+                    {/* Author and Date Information */}
+                    <div className="space-y-4 mb-8">
+                      <div className="flex justify-between items-center py-2">
+                        <span className="text-gray-600">작성자</span>
+                        <span className="font-medium">DOHEE KIM</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        {post.readTime} min read
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Eye className="h-4 w-4" />
-                        {formatViews(post.views)} views
+                      <div className="flex justify-between items-center py-2 mt-1">
+                        <span className="text-gray-600">작성일</span>
+                        <div className="text-right">
+                          <div className="font-medium">2024. 01. 15.</div>
+                        </div>
                       </div>
                     </div>
+
+                    {/* Main CTA Button */}
+                    <Button
+                      size="lg"
+                      className="w-full bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium rounded-lg"
+                      style={{ padding: "32px" }}
+                    >
+                      잘 읽었어요
+                    </Button>
                   </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Button size="sm" className="gap-2">
-                        <Heart className="h-4 w-4" />
-                        {post.likes}
-                      </Button>
-                      <Button variant="outline" size="sm" className="gap-2">
-                        <Bookmark className="h-4 w-4" />
-                        Save
-                      </Button>
-                      <Button variant="outline" size="sm" className="gap-2">
-                        <Share2 className="h-4 w-4" />
-                        Share
-                      </Button>
-                    </div>
-                  </div>
-                </header>
-
-                {/* Featured Image */}
-                <div className="relative rounded-xl overflow-hidden">
-                  <img
-                    src={post.thumbnail}
-                    alt={post.title}
-                    className="w-full h-64 sm:h-80 lg:h-96 object-cover"
-                  />
                 </div>
+              </div>
 
-                {/* Article Content */}
+              {/* Project Content */}
+              <div className="mt-8 bg-white rounded-xl p-8 shadow-sm">
                 <div className="prose prose-lg max-w-none">
-                  <div className="whitespace-pre-wrap leading-relaxed">
+                  <div className="whitespace-pre-wrap leading-relaxed text-gray-700">
                     {post.content}
                   </div>
 
-                  {/* Mock article content */}
+                  {/* Additional project content */}
                   <div className="space-y-6 mt-8">
-                    <h2>Introduction</h2>
-                    <p>
-                      This article explores the fundamental concepts and
-                      practical applications discussed in the title. We'll dive
-                      deep into the technical aspects while providing practical
-                      examples that you can implement in your own projects.
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      프로젝트 소개
+                    </h2>
+                    <p className="text-gray-700 leading-relaxed">
+                      {post.excerpt}
                     </p>
 
-                    <h2>Key Concepts</h2>
-                    <p>
-                      Understanding the core principles is essential for
-                      mastering this topic. Let's break down the most important
-                      concepts you need to know.
-                    </p>
-
-                    <h3>Best Practices</h3>
-                    <ul>
-                      <li>Always follow industry standards and conventions</li>
-                      <li>
-                        Write clean, maintainable, and well-documented code
-                      </li>
-                      <li>Test your implementations thoroughly</li>
-                      <li>Consider performance implications in your designs</li>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      주요 특징
+                    </h3>
+                    <ul className="space-y-2 text-gray-700">
+                      <li>• 혁신적인 아이디어와 실용적인 접근 방식</li>
+                      <li>• 사용자 중심의 설계와 편의성</li>
+                      <li>• 지속 가능한 개발과 확장성</li>
+                      <li>• 커뮤니티와의 지속적인 소통</li>
                     </ul>
 
-                    <h2>Implementation Examples</h2>
-                    <p>
-                      Here are some practical examples that demonstrate how to
-                      apply these concepts in real-world scenarios. Each example
-                      includes detailed explanations and code snippets.
-                    </p>
-
-                    <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
-                      <code>{`// Example code snippet
-function exampleFunction() {
-  console.log("This is a sample implementation");
-  return "Hello, World!";
-}`}</code>
-                    </pre>
-
-                    <h2>Conclusion</h2>
-                    <p>
-                      By following the guidelines and examples presented in this
-                      article, you should now have a solid understanding of the
-                      topic. Remember to practice regularly and stay updated
-                      with the latest developments in the field.
-                    </p>
+                    <div className="bg-blue-50 p-6 rounded-lg">
+                      <h4 className="font-semibold text-blue-900 mb-2">
+                        작성자 정보
+                      </h4>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center">
+                          <User className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-blue-900">
+                            {post.author.name}
+                          </p>
+                          <p className="text-sm text-blue-700">
+                            {post.author.role}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </article>
+              </div>
 
-              {/* Related Articles */}
+              {/* Related Posts */}
               {relatedPosts.length > 0 && (
-                <section className="mt-12 space-y-6">
-                  <Separator />
-                  <div>
-                    <h2 className="text-2xl font-bold mb-2">
-                      Related Articles
+                <section className="mt-8">
+                  <div className="bg-white rounded-xl p-8 shadow-sm">
+                    <h2 className="text-2xl font-bold mb-6 text-gray-900">
+                      관련 프로젝트
                     </h2>
-                    <p className="text-muted-foreground">
-                      More articles in the {post.category} category
-                    </p>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {relatedPosts.map((relatedPost) => (
-                      <Card
-                        key={relatedPost.id}
-                        className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
-                      >
-                        <div className="relative">
-                          <img
-                            src={relatedPost.thumbnail}
-                            alt={relatedPost.title}
-                            className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        </div>
-                        <CardHeader className="pb-3">
-                          <CardTitle className="text-sm leading-tight line-clamp-2">
-                            <Link
-                              href={`/post/${relatedPost.id}`}
-                              className="hover:text-primary transition-colors"
-                            >
-                              {relatedPost.title}
-                            </Link>
-                          </CardTitle>
-                        </CardHeader>
-                      </Card>
-                    ))}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {relatedPosts.map((relatedPost) => (
+                        <Card
+                          key={relatedPost.id}
+                          className="group hover:shadow-lg transition-all duration-300 overflow-hidden border-gray-200"
+                        >
+                          <div className="relative">
+                            <img
+                              src={relatedPost.thumbnail}
+                              alt={relatedPost.title}
+                              className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute top-3 left-3">
+                              <Badge
+                                className="text-white text-xs"
+                                style={{
+                                  backgroundColor: "rgba(207, 207, 207, 1)",
+                                }}
+                              >
+                                Frontend
+                              </Badge>
+                            </div>
+                          </div>
+                          <CardHeader className="p-4">
+                            <CardTitle className="text-base leading-tight line-clamp-2 text-gray-900">
+                              <Link
+                                href={`/post/${relatedPost.id}`}
+                                className="hover:text-blue-600 transition-colors"
+                              >
+                                {relatedPost.title}
+                              </Link>
+                            </CardTitle>
+                            <div className="flex items-center justify-between text-sm text-gray-600 mt-3">
+                              <span className="font-medium">DOHEE KIM</span>
+                              <span>2024.01.15</span>
+                            </div>
+                          </CardHeader>
+                        </Card>
+                      ))}
+                    </div>
                   </div>
                 </section>
               )}

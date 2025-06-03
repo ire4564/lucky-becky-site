@@ -3,10 +3,10 @@
 import { Badge } from "@/src/components/Badge";
 import { Button } from "@/src/components/Button";
 import { Input } from "@/src/components/Input";
-import { Bell, BookOpen, Search, TrendingUp, User } from "lucide-react";
+import { Moon, Search, Sun } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   onSearch?: (query: string) => void;
@@ -14,7 +14,34 @@ interface HeaderProps {
 
 export function Header({ onSearch }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const router = useRouter();
+
+  // Check for existing theme on mount
+  useEffect(() => {
+    const isDark =
+      document.documentElement.classList.contains("dark") ||
+      localStorage.getItem("theme") === "dark" ||
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+
+    if (newDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,15 +56,7 @@ export function Header({ onSearch }: HeaderProps) {
       <div className="container flex h-16 items-center px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <BookOpen className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">TechBlog</h1>
-              <p className="text-xs text-muted-foreground">Developer Hub</p>
-            </div>
-          </Link>
+          <Link href="/" className="flex items-center gap-2"></Link>
         </div>
 
         {/* Search bar */}
@@ -56,26 +75,19 @@ export function Header({ onSearch }: HeaderProps) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
-          {/* Trending badge */}
-          <Badge
-            variant="secondary"
-            className="hidden sm:flex items-center gap-1"
+          {/* Dark mode toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleDarkMode}
+            className="relative"
+            aria-label="Toggle dark mode"
           >
-            <TrendingUp className="h-3 w-3" />
-            Hot Topics
-          </Badge>
-
-          {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-4 w-4" />
-            <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-[10px] text-white flex items-center justify-center">
-              3
-            </span>
-          </Button>
-
-          {/* User menu */}
-          <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-            <User className="h-4 w-4" />
+            {isDarkMode ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
           </Button>
         </div>
       </div>

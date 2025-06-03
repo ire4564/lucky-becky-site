@@ -28,6 +28,8 @@ import {
 import { Header } from "../components/Header";
 import { Separator } from "../components/Separator";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
+import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
+import { ShortcutMenu } from "../components/ShortcutMenu";
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -77,74 +79,28 @@ export function HomePage() {
           <Header onSearch={handleSearch} />
 
           <main className="flex-1 overflow-auto">
-            <div className="container max-w-7xl mx-auto p-6 space-y-8">
-              {/* Hero Section */}
-              <section className="relative rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-8 text-white overflow-hidden">
-                <div className="relative z-10">
-                  <h1 className="text-4xl font-bold mb-4">
-                    Welcome to TechBlog
-                  </h1>
-                  <p className="text-xl text-blue-100 mb-6 max-w-2xl">
-                    Discover the latest insights, tutorials, and best practices
-                    in software development. Join our community of developers
-                    sharing knowledge and building the future.
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <Button
-                      size="lg"
-                      className="bg-white text-blue-600 hover:bg-blue-50"
-                    >
-                      Explore Articles
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-white text-white hover:bg-white/10"
-                    >
-                      Write Your First Post
-                    </Button>
-                  </div>
+            <div className="container max-w-7xl mx-auto px-6 pb-6 space-y-0.5">
+              {/* Traditional Lighting Swiper Section */}
+              <section className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div></div>
                 </div>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full"></div>
+                <TraditionalLightingSwiper />
               </section>
-
-              {/* Stats Section */}
-              <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {stats.map((stat, index) => (
-                  <Card key={index} className="relative overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-medium text-muted-foreground">
-                            {stat.title}
-                          </p>
-                          <p className="text-2xl font-bold">{stat.value}</p>
-                          <p className="text-xs text-green-600 font-medium">
-                            {stat.trend} from last month
-                          </p>
-                        </div>
-                        <div className="p-3 bg-primary/10 rounded-full">
-                          <stat.icon className="h-6 w-6 text-primary" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+              {/* Shortcut Menu Section */}
+              <section className="mt-5.5">
+                <ShortcutMenu />
               </section>
 
               {/* Featured Articles */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                      <Star className="h-6 w-6 text-yellow-500" />
-                      Featured Articles
+                    <h2 className="text-2xl font-bold gap-2">
+                      문제를 만들고 해결하는 과정
                     </h2>
                     <p className="text-muted-foreground">
-                      Handpicked articles from our top contributors
+                      이 세상에 필요한 것들은 너무 많다
                     </p>
                   </div>
                   <Button variant="outline" asChild>
