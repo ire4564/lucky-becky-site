@@ -130,10 +130,6 @@ export function TraditionalLightingSwiper() {
                         <div className="absolute inset-2 bg-gradient-to-b from-yellow-300 via-yellow-400 to-amber-300 rounded opacity-90"></div>
                       </div>
                     </div>
-
-                    {/* Soft glow effects */}
-                    <div className="absolute right-32 bottom-20 w-24 h-32 bg-yellow-200/30 rounded-lg blur-2xl"></div>
-                    <div className="absolute right-8 bottom-16 w-24 h-32 bg-yellow-400/40 rounded-lg blur-2xl"></div>
                   </div>
                 </div>
 
