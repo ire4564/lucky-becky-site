@@ -87,7 +87,7 @@ export function HomePage() {
                 <TraditionalLightingSwiper />
               </section>
               {/* Stats Section */}
-              <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5.5">
                 {stats.map((stat, index) => (
                   <Card key={index} className="relative overflow-hidden">
                     <CardContent className="p-6">
