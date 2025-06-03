@@ -90,7 +90,21 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Pretendard";
+    font-family:
+      "Pretendard",
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      "Helvetica Neue",
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
+      "Malgun Gothic",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      sans-serif;
   }
 }
 
@@ -117,25 +131,29 @@
   }
 }
 
-@layer utilities {
-  .line-clamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-  }
+/* Featured Posts Carousel Styles */
+.featured-posts-carousel .embla__slide {
+  transition: transform 0.3s ease;
+}
 
-  .line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
+.featured-posts-carousel:hover .embla__slide {
+  transition: transform 0.5s ease;
+}
 
-  .line-clamp-3 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+/* Continuous Flowing Animation Effect */
+@keyframes flow-right {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.continuous-flow {
+  animation: flow-right 20s linear infinite;
+}
+
+.continuous-flow:hover {
+  animation-play-state: paused;
 }
