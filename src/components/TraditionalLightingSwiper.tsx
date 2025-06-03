@@ -8,15 +8,15 @@ import { useCallback, useEffect, useState } from "react";
 const lightingProducts = [
   {
     id: 1,
-    title: "2025 올해",
-    subtitle: "도전한 것들",
-    description: "우당탕탕 사이드 프로젝트 출시기",
+    title: "불편함 찾기",
+    subtitle: "왜 꼭 따로 써야 하는걸까?",
+    description: "나만의 프로필, 네임드미 개발기",
     image: "/images/traditional-lamp-1.jpg",
-    background: "from-amber-900 via-yellow-800 to-orange-900",
+    background: "to-blue-900",
   },
   {
     id: 2,
-    title: "2025 나의",
+    title: "2025 나의 목표",
     subtitle: "문제해결 방식",
     description: "우당탕탕 사이드의 기록",
     image: "/images/traditional-lamp-2.jpg",
@@ -24,9 +24,9 @@ const lightingProducts = [
   },
   {
     id: 3,
-    title: "선조들의 지혜가",
-    subtitle: "깃든 한지등",
-    description: "자연과 조화를 이루는 한지 조명",
+    title: "어떤 컴포넌트가",
+    subtitle: "좋은 컴포넌트일까?",
+    description: "컴포넌트 소개 및 사용 방법",
     image: "/images/traditional-lamp-3.jpg",
     background: "from-stone-800 via-amber-800 to-yellow-900",
   },
@@ -47,102 +47,41 @@ export function TraditionalLightingSwiper() {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
-  const onSelect = useCallback(() => {
+  const handleSelect = useCallback(() => {
     if (!emblaApi) return;
     setCurrentSlide(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
+    handleSelect();
+    emblaApi.on("select", handleSelect);
+  }, [emblaApi, handleSelect]);
 
   return (
-    <div className="relative w-full h-[320px] rounded-2xl overflow-hidden">
+    <div className="mt-6 relative w-full h-[300px] rounded-2xl overflow-hidden">
       {/* Embla Carousel */}
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {lightingProducts.map((product) => (
             <div key={product.id} className="flex-[0_0_100%] min-w-0 relative">
               {/* Background matching the reference image */}
-              <div className="h-full bg-gradient-to-br from-amber-700 via-amber-600 to-amber-800 relative overflow-hidden">
-                {/* Wooden table surface */}
-                <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-amber-900 via-amber-800 to-amber-700"></div>
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 opacity-60"></div>
-
+              <div className="h-full bg-gradient-to-br bg-blue-800 relative overflow-hidden">
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex items-center gap-0.5 mx-3.5 my-0 -mb-1 px-12 pb-10">
                   {/* Left Text Content */}
-                  <div
-                    className="w-1/2 space-y-3 mr-3.5 -my-1.25"
-                    style={{ lineHeight: "42px" }}
-                  >
-                    <h2
-                      className="text-4xl font-bold text-white tracking-wide"
-                      style={{ fontSize: "42px", lineHeight: "42px" }}
-                    >
+                  <div className="space-y-3 mr-3.5 -my-1.25 leading-5">
+                    <h2 className="text-4xl font-bold text-white tracking-wide">
                       {product.title}
                     </h2>
-                    <h3
-                      className="text-4xl font-bold text-white tracking-wide mt-3"
-                      style={{ fontSize: "42px", lineHeight: "42px" }}
-                    >
+                    <h3 className="text-4xl font-bold text-white tracking-wide">
                       {product.subtitle}
                     </h3>
-                    <p className="text-lg text-white/90 font-medium mt-3 tracking-wide">
+                    <p className="text-lg text-white/90 font-medium tracking-wide">
                       {product.description}
                     </p>
                   </div>
-
-                  {/* Right Product Images */}
-                  <div className="w-1/2 h-full flex items-center justify-end relative pr-8">
-                    {/* White Traditional Lantern */}
-                    <div className="absolute right-32 bottom-20 transform rotate-2">
-                      {/* Wooden base/stand */}
-                      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-                        <div className="w-16 h-3 bg-amber-800 rounded-full"></div>
-                        <div className="w-20 h-2 bg-amber-900 rounded-full mt-1"></div>
-                        {/* Wooden legs */}
-                        <div className="absolute -top-1 left-2 w-1 h-6 bg-amber-700 rotate-12"></div>
-                        <div className="absolute -top-1 right-2 w-1 h-6 bg-amber-700 -rotate-12"></div>
-                      </div>
-
-                      {/* Lantern body */}
-                      <div className="w-24 h-32 bg-white rounded-lg shadow-2xl relative overflow-hidden">
-                        {/* Curved top */}
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-white rounded-t-3xl border-b border-gray-200"></div>
-
-                        {/* Inner glow */}
-                        <div className="absolute inset-2 bg-gradient-to-b from-yellow-100 via-yellow-200 to-amber-100 rounded opacity-80"></div>
-                      </div>
-                    </div>
-
-                    {/* Dark Traditional Lantern */}
-                    <div className="absolute right-8 bottom-16 transform -rotate-1">
-                      {/* Wooden base/stand */}
-                      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-                        <div className="w-16 h-3 bg-amber-900 rounded-full"></div>
-                        <div className="w-20 h-2 bg-amber-950 rounded-full mt-1"></div>
-                        {/* Wooden legs */}
-                        <div className="absolute -top-1 left-2 w-1 h-6 bg-amber-800 rotate-12"></div>
-                        <div className="absolute -top-1 right-2 w-1 h-6 bg-amber-800 -rotate-12"></div>
-                      </div>
-
-                      {/* Lantern body */}
-                      <div className="w-24 h-32 bg-amber-900 rounded-lg shadow-2xl relative overflow-hidden">
-                        {/* Curved top */}
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-amber-800 rounded-t-3xl"></div>
-
-                        {/* Inner glow */}
-                        <div className="absolute inset-2 bg-gradient-to-b from-yellow-300 via-yellow-400 to-amber-300 rounded opacity-90"></div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-
-                {/* Ambient lighting overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-amber-900/20"></div>
               </div>
             </div>
           ))}
@@ -152,14 +91,14 @@ export function TraditionalLightingSwiper() {
       {/* Navigation Controls */}
       <div className="absolute bottom-6 right-6 flex items-center gap-3 z-20">
         {/* Slide Counter */}
-        <div className="bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+        <div className="bg-black/60 backdrop-blur-sm text-white px-3.5 py-1.5 rounded-full text-xs font-medium shadow-lg">
           {currentSlide + 1} / {lightingProducts.length}
         </div>
 
         {/* Previous Button */}
         <button
           onClick={scrollPrev}
-          className="w-12 h-12 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group shadow-lg"
+          className="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group shadow-lg"
           aria-label="이전 슬라이드"
         >
           <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
@@ -168,7 +107,7 @@ export function TraditionalLightingSwiper() {
         {/* Next Button */}
         <button
           onClick={scrollNext}
-          className="w-12 h-12 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group shadow-lg"
+          className="w-8 h-8 bg-black/60 hover:bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group shadow-lg"
           aria-label="다음 슬라이드"
         >
           <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />

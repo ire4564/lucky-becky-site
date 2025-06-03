@@ -6,9 +6,8 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TechBlog - Developer Hub",
-  description:
-    "Discover the latest insights, tutorials, and best practices in software development.",
+  title: "LuckyBecky - 문제를 만들고 해결하는 과정",
+  description: "문제를 만들고 해결하는 과정을 기록하는 블로그",
   keywords: [
     "tech blog",
     "programming",
@@ -17,9 +16,9 @@ export const metadata: Metadata = {
     "frontend",
     "backend",
   ],
-  authors: [{ name: "TechBlog Team" }],
-  creator: "TechBlog",
-  publisher: "TechBlog",
+  authors: [{ name: "Becky" }],
+  creator: "Becky",
+  publisher: "Becky",
   formatDetection: {
     email: false,
     address: false,

@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  blogCategories,
-  blogPosts,
-  getFeaturedPosts,
-} from "@/src/lib/blog-data";
-import { ArrowRight, BookOpen, Star, TrendingUp, Users } from "lucide-react";
+import { blogPosts, getFeaturedPosts } from "@/src/lib/blog-data";
 import Link from "next/link";
 import { useState } from "react";
 import { Badge } from "../components/Badge";
@@ -18,7 +13,6 @@ import {
   CardTitle,
 } from "../components/Card";
 import { Header } from "../components/Header";
-import { Separator } from "../components/Separator";
 import { ShortcutMenu } from "../components/ShortcutMenu";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
 import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
@@ -27,45 +21,14 @@ export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const featuredPosts = getFeaturedPosts();
   const recentPosts = blogPosts.slice(0, 6);
-  const trendingPosts = [...blogPosts]
-    .sort((a, b) => b.views - a.views)
-    .slice(0, 4);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    console.log("Searching for:", query);
   };
-
-  const stats = [
-    {
-      title: "Total Articles",
-      value: blogPosts.length,
-      icon: BookOpen,
-      trend: "+12%",
-    },
-    {
-      title: "Categories",
-      value: blogCategories.length,
-      icon: TrendingUp,
-      trend: "+3%",
-    },
-    {
-      title: "Authors",
-      value: "15",
-      icon: Users,
-      trend: "+8%",
-    },
-    {
-      title: "Monthly Views",
-      value: "125k",
-      icon: Star,
-      trend: "+24%",
-    },
-  ];
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen">
+      <div className="flex h-screen w-full">
         <BlogSidebar />
         <SidebarInset>
           <Header onSearch={handleSearch} />
@@ -74,16 +37,12 @@ export function HomePage() {
             <div className="container max-w-7xl mx-auto px-6 pb-6 space-y-0.5">
               {/* Traditional Lighting Swiper Section */}
               <section className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div></div>
-                </div>
                 <TraditionalLightingSwiper />
               </section>
               {/* Shortcut Menu Section */}
               <section className="mt-5.5">
                 <ShortcutMenu />
               </section>
-
               {/* Featured Articles */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -95,11 +54,8 @@ export function HomePage() {
                       이 세상에 필요한 것들은 너무 많다
                     </p>
                   </div>
-                  <Button variant="outline" asChild>
-                    <Link href="/featured">
-                      View All
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
+                  <Button variant="ghost" asChild>
+                    <Link href="/featured">전체보기</Link>
                   </Button>
                 </div>
 
@@ -147,16 +103,14 @@ export function HomePage() {
                 </div>
               </section>
 
-              <Separator />
-
               {/* Simple Recent Articles Grid */}
               <section className="space-y-6">
                 <div className="flex items-center justify-between mt-8">
                   <h2 className="text-2xl font-bold flex items-center gap-2">
                     최근 게시물
                   </h2>
-                  <Button variant="outline" asChild>
-                    <Link href="/recent">View All</Link>
+                  <Button variant="ghost" asChild>
+                    <Link href="/recent">전체보기</Link>
                   </Button>
                 </div>
 

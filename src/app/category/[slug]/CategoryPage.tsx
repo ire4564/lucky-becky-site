@@ -10,7 +10,7 @@ import {
 } from "@/src/components/Card";
 import { Header } from "@/src/components/Header";
 import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
-import { BlogCategory, BlogPost } from "@/types/blog";
+import { BlogCategory, BlogPost } from "@/src/types/blog";
 import Link from "next/link";
 
 interface CategoryPageProps {

@@ -51,11 +51,11 @@ export function Header({ onSearch }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center px-4 justify-between">
+      <div className="container flex h-16 items-center justify-between max-w-7xl">
         {/* Search bar */}
-        <div className="flex-1 max-w-md mx-4">
+        <div className="flex-1 max-w-md ml-[-12px]">
           <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute  left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder="찾고 있는 것이 있나요?"

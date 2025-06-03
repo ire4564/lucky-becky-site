@@ -8,17 +8,8 @@ import { Header } from "@/src/components/Header";
 import { Separator } from "@/src/components/Separator";
 import { SidebarInset, SidebarProvider } from "@/src/components/Sidebar";
 import { blogPosts } from "@/src/lib/blog-data";
-import { BlogPost } from "@/types/blog";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Eye,
-  Heart,
-  Share2,
-  User,
-  Tag,
-} from "lucide-react";
+import { BlogPost } from "@/src/types/blog";
+import { User } from "lucide-react";
 import Link from "next/link";
 
 interface BlogPostPageProps {
