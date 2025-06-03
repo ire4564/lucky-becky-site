@@ -97,13 +97,6 @@ export function HomePage() {
                       Explore Articles
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-white text-white hover:bg-white/10"
-                    >
-                      Write Your First Post
-                    </Button>
                   </div>
                 </div>
                 <div className="absolute inset-0 bg-black/20"></div>
