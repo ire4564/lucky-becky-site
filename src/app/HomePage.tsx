@@ -217,6 +217,21 @@ export function HomePage() {
                 </div>
               </section>
 
+              {/* Traditional Lighting Swiper Section */}
+              <section className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold flex items-center gap-2">
+                      🏮 전통 조명
+                    </h2>
+                    <p className="text-muted-foreground">
+                      한국의 아름다운 전통 조명을 만나보세요
+                    </p>
+                  </div>
+                </div>
+                <TraditionalLightingSwiper />
+              </section>
+
               {/* Stats Section */}
               <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {stats.map((stat, index) => (
