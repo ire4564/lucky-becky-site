@@ -45,19 +45,6 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
     return views.toString();
   };
 
-  // 크라우드펀딩 스타일의 가상 데이터 생성
-  const fundingData = {
-    status: "진행중",
-    targetAmount: 5000000,
-    currentAmount: Math.floor(post.views * 1000 + post.likes * 500),
-    daysLeft: Math.floor(Math.random() * 30) + 1,
-    supporters: Math.floor(post.views / 10) + post.likes,
-    progress: Math.min(
-      (Math.floor(post.views * 1000 + post.likes * 500) / 5000000) * 100,
-      227,
-    ),
-  };
-
   return (
     <SidebarProvider>
       <div className="flex h-screen">
@@ -91,6 +78,34 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
 
                   {/* Right: Project Information */}
                   <div className="p-8 lg:p-12 flex flex-col">
+                    {/* Status Badge */}
+                    <div className="flex items-center gap-2 mb-6">
+                      <div
+                        className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-white"
+                        style={{ backgroundColor: "rgba(207, 207, 207, 1)" }}
+                      >
+                        <span>🎁 </span>
+                        <span style={{ color: "rgba(97, 97, 97, 1)" }}>
+                          Frontend
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Title and Description */}
+                    <div className="mb-8">
+                      <h2 className="text-2xl font-bold text-gray-900 leading-8 mb-2">
+                        프로젝트 소개,
+                        <br />
+                        여기는 제목을 적는 곳입니다
+                        <br />
+                      </h2>
+                      <div className="text-gray-700 leading-relaxed whitespace-pre-wrap mt-2">
+                        여기는 소제목을 적는 곳이에요 하나둘
+                      </div>
+                    </div>
+
+                    <Separator className="my-6" />
+
                     {/* Author and Date Information */}
                     <div className="space-y-4 mb-8">
                       <div className="flex justify-between items-center py-2">
@@ -100,77 +115,8 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                       <div className="flex justify-between items-center py-2 mt-1">
                         <span className="text-gray-600">작성일</span>
                         <div className="text-right">
-                          <div className="font-medium">
-                            2024. 01. 15.
-                          </div>
+                          <div className="font-medium">2024. 01. 15.</div>
                         </div>
-                      </div>
-                    </div>
-                        여기는 소제목을 적는 곳이에요 하나둘
-                      </div>
-                    </div>
-
-                    <Separator className="my-6" />
-
-                    {/* Project Details */}
-                    <div className="space-y-4 mb-8">
-                      <div className="flex justify-between items-center py-2">
-                        <span className="text-gray-600">목표금액</span>
-                        <span className="font-medium">
-                          {fundingData.targetAmount.toLocaleString()}원
-                        </span>
-                      </div>
-
-                      <div className="flex justify-between items-center py-2">
-                        <span className="text-gray-600">펀딩 기간</span>
-                        <div className="text-right">
-                          <div className="font-medium">
-                            {formatDate(post.publishedAt)} ~{" "}
-                            {formatDate(
-                              new Date(
-                                Date.now() +
-                                  fundingData.daysLeft * 24 * 60 * 60 * 1000,
-                              ).toISOString(),
-                            )}
-                          </div>
-                          <span className="text-sm text-red-500">
-                            {fundingData.daysLeft}일 남음
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex justify-between items-center py-2">
-                        <span className="text-gray-600">결제</span>
-                        <span className="font-medium">
-                          목표금액 달성시{" "}
-                          {formatDate(
-                            new Date(
-                              Date.now() +
-                                (fundingData.daysLeft + 1) *
-                                  24 *
-                                  60 *
-                                  60 *
-                                  1000,
-                            ).toISOString(),
-                          )}
-                          에 결제 진행
-                        </span>
-                      </div>
-
-                      <div className="flex justify-between items-center py-2">
-                        <span className="text-gray-600">예상 발송 시점</span>
-                        <span className="font-medium">
-                          {formatDate(
-                            new Date(
-                              Date.now() +
-                                (fundingData.daysLeft + 40) *
-                                  24 *
-                                  60 *
-                                  60 *
-                                  1000,
-                            ).toISOString(),
-                          )}
-                        </span>
                       </div>
                     </div>
 
@@ -255,8 +201,13 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                               className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                             <div className="absolute top-3 left-3">
-                              <Badge className="bg-red-500 hover:bg-red-600 text-white text-xs">
-                                진행중
+                              <Badge
+                                className="text-white text-xs"
+                                style={{
+                                  backgroundColor: "rgba(207, 207, 207, 1)",
+                                }}
+                              >
+                                Frontend
                               </Badge>
                             </div>
                           </div>
@@ -270,12 +221,8 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                               </Link>
                             </CardTitle>
                             <div className="flex items-center justify-between text-sm text-gray-600 mt-3">
-                              <span className="font-medium">
-                                {Math.floor(relatedPost.views * 234)}%
-                              </span>
-                              <span>
-                                {Math.floor(relatedPost.views / 10)}명 후원
-                              </span>
+                              <span className="font-medium">DOHEE KIM</span>
+                              <span>2024.01.15</span>
                             </div>
                           </CardHeader>
                         </Card>
