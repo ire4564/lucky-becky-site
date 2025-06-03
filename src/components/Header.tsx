@@ -48,15 +48,6 @@ export function Header({ onSearch }: HeaderProps) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2">
-          {/* Trending badge */}
-          <Badge
-            variant="secondary"
-            className="hidden sm:flex items-center gap-1"
-          >
-            <TrendingUp className="h-3 w-3" />
-            Hot Topics
-          </Badge>
-
           {/* Notifications */}
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-4 w-4" />
