@@ -180,11 +180,23 @@ const SidebarMenuButton = React.forwardRef<
     },
     ref,
   ) => {
-    const Comp = asChild ? "div" : "button";
+    if (asChild) {
+      return (
+        <div
+          className={cn(
+            "flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+            isActive && "bg-accent text-accent-foreground font-medium",
+            size === "sm" && "h-7 text-xs",
+            size === "lg" && "h-12 text-sm",
+            className,
+          )}
+          {...(props as React.ComponentProps<"div">)}
+        />
+      );
+    }
 
-    // ref를 타입 추론 가능한 형태로 정의
     return (
-      <Comp
+      <button
         ref={ref}
         className={cn(
           "flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-none ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
