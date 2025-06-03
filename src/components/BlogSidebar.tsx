@@ -88,7 +88,7 @@ const getCategoryDisplayName = (categoryName: string, categorySlug: string) => {
 
 // Filter out categories we don't want to show
 const shouldShowCategory = (categorySlug: string) => {
-  return !["web3"].includes(categorySlug);
+  return !["web3", "mobile"].includes(categorySlug);
 };
 
 export function BlogSidebar() {
