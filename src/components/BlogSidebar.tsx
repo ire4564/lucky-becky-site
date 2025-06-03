@@ -82,7 +82,7 @@ export function BlogSidebar() {
               <Link href="/">
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">LUCKY BECKY</span>
-                  <span className="truncate text-xs">Developer Hub</span>
+                  <span className="truncate text-xs">recording archive</span>
                 </div>
               </Link>
             </SidebarMenuButton>
