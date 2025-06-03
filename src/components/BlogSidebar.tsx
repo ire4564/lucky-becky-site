@@ -178,125 +178,24 @@ export function BlogSidebar() {
       <SidebarFooter>
         <div className="flex flex-col items-center justify-center p-4 space-y-3">
           {/* QR Code */}
-          <div className="bg-white p-2 rounded-lg shadow-sm border">
-            <div className="w-20 h-20 bg-white relative">
-              <svg
-                width="80"
-                height="80"
-                viewBox="0 0 80 80"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* QR Code SVG pattern matching the reference image */}
-
-                {/* Corner detection patterns */}
-                <rect x="0" y="0" width="24" height="24" fill="black" />
-                <rect x="4" y="4" width="16" height="16" fill="white" />
-                <rect x="8" y="8" width="8" height="8" fill="black" />
-
-                <rect x="56" y="0" width="24" height="24" fill="black" />
-                <rect x="60" y="4" width="16" height="16" fill="white" />
-                <rect x="64" y="8" width="8" height="8" fill="black" />
-
-                <rect x="0" y="56" width="24" height="24" fill="black" />
-                <rect x="4" y="60" width="16" height="16" fill="white" />
-                <rect x="8" y="64" width="8" height="8" fill="black" />
-
-                {/* Timing patterns */}
-                <rect x="28" y="24" width="4" height="4" fill="black" />
-                <rect x="36" y="24" width="4" height="4" fill="black" />
-                <rect x="44" y="24" width="4" height="4" fill="black" />
-                <rect x="52" y="24" width="4" height="4" fill="black" />
-
-                <rect x="24" y="28" width="4" height="4" fill="black" />
-                <rect x="24" y="36" width="4" height="4" fill="black" />
-                <rect x="24" y="44" width="4" height="4" fill="black" />
-                <rect x="24" y="52" width="4" height="4" fill="black" />
-
-                {/* Data patterns - creating a complex realistic pattern */}
-                <rect x="32" y="8" width="4" height="4" fill="black" />
-                <rect x="40" y="8" width="4" height="4" fill="black" />
-                <rect x="48" y="8" width="4" height="4" fill="black" />
-
-                <rect x="28" y="32" width="4" height="4" fill="black" />
-                <rect x="32" y="32" width="4" height="4" fill="white" />
-                <rect x="36" y="32" width="4" height="4" fill="black" />
-                <rect x="40" y="32" width="4" height="4" fill="white" />
-                <rect x="44" y="32" width="4" height="4" fill="black" />
-                <rect x="48" y="32" width="4" height="4" fill="black" />
-                <rect x="52" y="32" width="4" height="4" fill="white" />
-
-                <rect x="32" y="36" width="4" height="4" fill="white" />
-                <rect x="40" y="36" width="4" height="4" fill="black" />
-                <rect x="48" y="36" width="4" height="4" fill="white" />
-
-                <rect x="28" y="40" width="4" height="4" fill="white" />
-                <rect x="36" y="40" width="4" height="4" fill="black" />
-                <rect x="44" y="40" width="4" height="4" fill="white" />
-                <rect x="52" y="40" width="4" height="4" fill="black" />
-
-                <rect x="32" y="44" width="4" height="4" fill="black" />
-                <rect x="40" y="44" width="4" height="4" fill="white" />
-                <rect x="48" y="44" width="4" height="4" fill="black" />
-
-                <rect x="28" y="48" width="4" height="4" fill="black" />
-                <rect x="36" y="48" width="4" height="4" fill="white" />
-                <rect x="44" y="48" width="4" height="4" fill="black" />
-                <rect x="52" y="48" width="4" height="4" fill="white" />
-
-                {/* Bottom patterns */}
-                <rect x="32" y="56" width="4" height="4" fill="white" />
-                <rect x="40" y="56" width="4" height="4" fill="black" />
-                <rect x="48" y="56" width="4" height="4" fill="white" />
-
-                <rect x="28" y="60" width="4" height="4" fill="black" />
-                <rect x="36" y="60" width="4" height="4" fill="white" />
-                <rect x="44" y="60" width="4" height="4" fill="black" />
-                <rect x="52" y="60" width="4" height="4" fill="black" />
-
-                <rect x="32" y="64" width="4" height="4" fill="black" />
-                <rect x="40" y="64" width="4" height="4" fill="white" />
-                <rect x="48" y="64" width="4" height="4" fill="white" />
-
-                <rect x="28" y="68" width="4" height="4" fill="white" />
-                <rect x="36" y="68" width="4" height="4" fill="black" />
-                <rect x="44" y="68" width="4" height="4" fill="white" />
-                <rect x="52" y="68" width="4" height="4" fill="black" />
-
-                <rect x="32" y="72" width="4" height="4" fill="black" />
-                <rect x="40" y="72" width="4" height="4" fill="black" />
-                <rect x="48" y="72" width="4" height="4" fill="white" />
-                <rect x="52" y="72" width="4" height="4" fill="black" />
-
-                {/* Right side patterns */}
-                <rect x="56" y="32" width="4" height="4" fill="black" />
-                <rect x="64" y="32" width="4" height="4" fill="white" />
-                <rect x="72" y="32" width="4" height="4" fill="black" />
-
-                <rect x="60" y="36" width="4" height="4" fill="white" />
-                <rect x="68" y="36" width="4" height="4" fill="black" />
-                <rect x="76" y="36" width="4" height="4" fill="white" />
-
-                <rect x="56" y="40" width="4" height="4" fill="black" />
-                <rect x="64" y="40" width="4" height="4" fill="black" />
-                <rect x="72" y="40" width="4" height="4" fill="white" />
-
-                <rect x="60" y="44" width="4" height="4" fill="white" />
-                <rect x="68" y="44" width="4" height="4" fill="white" />
-                <rect x="76" y="44" width="4" height="4" fill="black" />
-
-                <rect x="56" y="48" width="4" height="4" fill="black" />
-                <rect x="64" y="48" width="4" height="4" fill="white" />
-                <rect x="72" y="48" width="4" height="4" fill="black" />
-
-                {/* Alignment pattern */}
-                <rect x="60" y="60" width="16" height="16" fill="black" />
-                <rect x="64" y="64" width="8" height="8" fill="white" />
-                <rect x="68" y="68" width="4" height="4" fill="black" />
-              </svg>
+          <div className="bg-white p-3 rounded-lg shadow-sm border">
+            <div className="w-20 h-20 bg-gray-100 rounded border flex items-center justify-center">
+              {/* Simple QR Code placeholder - you can replace this with an actual QR code image */}
+              <div className="w-full h-full bg-white rounded grid grid-cols-8 grid-rows-8 gap-px p-1">
+                {/* Simple pattern to represent QR code */}
+                {Array.from({ length: 64 }, (_, i) => (
+                  <div
+                    key={i}
+                    className={`
+                      ${Math.random() > 0.5 ? "bg-black" : "bg-white"}
+                      ${i < 8 || i % 8 === 0 || i % 8 === 7 || i >= 56 ? "bg-black" : ""}
+                      ${[0, 7, 56, 63].includes(i) ? "bg-black" : ""}
+                    `}
+                  />
+                ))}
+              </div>
             </div>
           </div>
-
           {/* Scan Me Button */}
           <div className="relative">
             <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
