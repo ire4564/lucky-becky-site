@@ -66,92 +66,112 @@ export function TraditionalLightingSwiper() {
         <div className="flex h-full">
           {lightingProducts.map((product) => (
             <div key={product.id} className="flex-[0_0_100%] min-w-0 relative">
-              {/* Background with wooden texture effect */}
-              <div className="h-full bg-gradient-to-br from-amber-100 via-orange-200 to-amber-300 relative overflow-hidden">
+              {/* Background matching the reference image */}
+              <div className="h-full bg-gradient-to-br from-amber-200 via-orange-300 to-amber-400 relative overflow-hidden">
+                {/* Wooden surface at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-700 via-amber-600 to-transparent"></div>
+
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex items-center px-12">
                   {/* Left Text Content */}
-                  <div className="w-1/2 space-y-4">
-                    <h2 className="text-4xl font-bold text-amber-900 leading-tight">
+                  <div className="w-1/2 space-y-3">
+                    <h2 className="text-4xl font-bold text-white leading-tight tracking-wide">
                       {product.title}
                     </h2>
-                    <h3 className="text-4xl font-bold text-amber-900 leading-tight">
+                    <h3 className="text-4xl font-bold text-white leading-tight tracking-wide">
                       {product.subtitle}
                     </h3>
-                    <p className="text-lg text-amber-800 font-medium mt-6">
+                    <p className="text-lg text-white/90 font-medium mt-8 tracking-wide">
                       {product.description}
                     </p>
                   </div>
 
                   {/* Right Product Images */}
-                  <div className="w-1/2 h-full flex items-center justify-center relative">
-                    {/* Wooden Surface */}
-                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-amber-600 to-amber-400 opacity-60"></div>
+                  <div className="w-1/2 h-full flex items-center justify-end relative pr-8">
+                    {/* White Traditional Lantern */}
+                    <div className="absolute right-32 bottom-20 transform rotate-2">
+                      {/* Wooden base/stand */}
+                      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                        <div className="w-16 h-3 bg-amber-800 rounded-full"></div>
+                        <div className="w-20 h-2 bg-amber-900 rounded-full mt-1"></div>
+                        {/* Wooden legs */}
+                        <div className="absolute -top-1 left-2 w-1 h-6 bg-amber-700 rotate-12"></div>
+                        <div className="absolute -top-1 right-2 w-1 h-6 bg-amber-700 -rotate-12"></div>
+                      </div>
 
-                    {/* White Traditional Lamp */}
-                    <div className="absolute right-40 bottom-16 transform rotate-3">
-                      {/* Lamp Base */}
-                      <div className="w-6 h-3 bg-amber-600 rounded-full mb-1"></div>
-                      <div className="w-8 h-2 bg-amber-700 rounded-full mb-2"></div>
+                      {/* Lantern body */}
+                      <div className="w-24 h-32 bg-white rounded-lg shadow-2xl relative overflow-hidden">
+                        {/* Curved top */}
+                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-white rounded-t-3xl border-b border-gray-200"></div>
 
-                      {/* Lamp Body */}
-                      <div className="w-20 h-28 bg-white rounded-lg shadow-2xl relative border border-gray-200">
-                        {/* Top Handle */}
-                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-12 h-6 bg-white border border-gray-200 rounded-t-full"></div>
+                        {/* Inner glow */}
+                        <div className="absolute inset-2 bg-gradient-to-b from-yellow-100 via-yellow-200 to-amber-100 rounded opacity-80"></div>
 
-                        {/* Light Glow */}
-                        <div className="absolute top-3 left-2 right-2 h-4 bg-gradient-to-r from-yellow-200 to-amber-200 rounded opacity-80"></div>
-
-                        {/* Traditional Pattern */}
-                        <div className="absolute top-8 left-2 right-2 bottom-4 border-2 border-amber-600/40 rounded">
-                          <div className="grid grid-cols-3 gap-0.5 p-1 h-full">
-                            {[...Array(12)].map((_, i) => (
-                              <div
-                                key={i}
-                                className="bg-amber-100 border border-amber-300/50"
-                              ></div>
-                            ))}
-                          </div>
+                        {/* Traditional lattice pattern */}
+                        <div className="absolute inset-3 border border-amber-600/30 rounded">
+                          {/* Horizontal lines */}
+                          <div className="absolute top-2 left-0 right-0 h-px bg-amber-600/40"></div>
+                          <div className="absolute top-6 left-0 right-0 h-px bg-amber-600/40"></div>
+                          <div className="absolute bottom-6 left-0 right-0 h-px bg-amber-600/40"></div>
+                          <div className="absolute bottom-2 left-0 right-0 h-px bg-amber-600/40"></div>
+                          {/* Vertical lines */}
+                          <div className="absolute left-2 top-0 bottom-0 w-px bg-amber-600/40"></div>
+                          <div className="absolute left-6 top-0 bottom-0 w-px bg-amber-600/40"></div>
+                          <div className="absolute right-6 top-0 bottom-0 w-px bg-amber-600/40"></div>
+                          <div className="absolute right-2 top-0 bottom-0 w-px bg-amber-600/40"></div>
+                          {/* Decorative patterns */}
+                          <div className="absolute top-3 left-3 w-3 h-3 border border-amber-600/50 rotate-45"></div>
+                          <div className="absolute top-3 right-3 w-3 h-3 border border-amber-600/50 rotate-45"></div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Dark Traditional Lamp */}
-                    <div className="absolute right-20 bottom-12 transform -rotate-2">
-                      {/* Lamp Base */}
-                      <div className="w-6 h-3 bg-amber-800 rounded-full mb-1"></div>
-                      <div className="w-8 h-2 bg-amber-900 rounded-full mb-2"></div>
+                    {/* Dark Traditional Lantern */}
+                    <div className="absolute right-8 bottom-16 transform -rotate-1">
+                      {/* Wooden base/stand */}
+                      <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                        <div className="w-16 h-3 bg-amber-900 rounded-full"></div>
+                        <div className="w-20 h-2 bg-amber-950 rounded-full mt-1"></div>
+                        {/* Wooden legs */}
+                        <div className="absolute -top-1 left-2 w-1 h-6 bg-amber-800 rotate-12"></div>
+                        <div className="absolute -top-1 right-2 w-1 h-6 bg-amber-800 -rotate-12"></div>
+                      </div>
 
-                      {/* Lamp Body */}
-                      <div className="w-20 h-28 bg-amber-900 rounded-lg shadow-2xl relative">
-                        {/* Top Handle */}
-                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-12 h-6 bg-amber-800 rounded-t-full"></div>
+                      {/* Lantern body */}
+                      <div className="w-24 h-32 bg-amber-900 rounded-lg shadow-2xl relative overflow-hidden">
+                        {/* Curved top */}
+                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-amber-800 rounded-t-3xl"></div>
 
-                        {/* Light Glow */}
-                        <div className="absolute top-3 left-2 right-2 h-4 bg-gradient-to-r from-yellow-300 to-amber-300 rounded opacity-90"></div>
+                        {/* Inner glow */}
+                        <div className="absolute inset-2 bg-gradient-to-b from-yellow-300 via-yellow-400 to-amber-300 rounded opacity-90"></div>
 
-                        {/* Traditional Pattern */}
-                        <div className="absolute top-8 left-2 right-2 bottom-4 border-2 border-yellow-400/60 rounded">
-                          <div className="grid grid-cols-3 gap-0.5 p-1 h-full">
-                            {[...Array(12)].map((_, i) => (
-                              <div
-                                key={i}
-                                className="bg-yellow-300/40 border border-yellow-400/50"
-                              ></div>
-                            ))}
-                          </div>
+                        {/* Traditional lattice pattern */}
+                        <div className="absolute inset-3 border border-yellow-400/60 rounded">
+                          {/* Horizontal lines */}
+                          <div className="absolute top-2 left-0 right-0 h-px bg-yellow-400/60"></div>
+                          <div className="absolute top-6 left-0 right-0 h-px bg-yellow-400/60"></div>
+                          <div className="absolute bottom-6 left-0 right-0 h-px bg-yellow-400/60"></div>
+                          <div className="absolute bottom-2 left-0 right-0 h-px bg-yellow-400/60"></div>
+                          {/* Vertical lines */}
+                          <div className="absolute left-2 top-0 bottom-0 w-px bg-yellow-400/60"></div>
+                          <div className="absolute left-6 top-0 bottom-0 w-px bg-yellow-400/60"></div>
+                          <div className="absolute right-6 top-0 bottom-0 w-px bg-yellow-400/60"></div>
+                          <div className="absolute right-2 top-0 bottom-0 w-px bg-yellow-400/60"></div>
+                          {/* Decorative patterns */}
+                          <div className="absolute top-3 left-3 w-3 h-3 border border-yellow-400/70 rotate-45"></div>
+                          <div className="absolute top-3 right-3 w-3 h-3 border border-yellow-400/70 rotate-45"></div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Ambient Light Effects */}
-                    <div className="absolute right-40 bottom-16 w-20 h-28 bg-yellow-200/40 rounded-lg blur-2xl"></div>
-                    <div className="absolute right-20 bottom-12 w-20 h-28 bg-yellow-400/50 rounded-lg blur-2xl"></div>
+                    {/* Soft glow effects */}
+                    <div className="absolute right-32 bottom-20 w-24 h-32 bg-yellow-200/30 rounded-lg blur-2xl"></div>
+                    <div className="absolute right-8 bottom-16 w-24 h-32 bg-yellow-400/40 rounded-lg blur-2xl"></div>
                   </div>
                 </div>
 
-                {/* Subtle Pattern Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-amber-900/10"></div>
+                {/* Ambient lighting overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-amber-900/20"></div>
               </div>
             </div>
           ))}
