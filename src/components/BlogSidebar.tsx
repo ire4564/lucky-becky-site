@@ -179,56 +179,50 @@ export function BlogSidebar() {
         <div className="flex flex-col items-center justify-center p-4 space-y-3">
           {/* QR Code */}
           <div className="bg-white p-3 rounded-lg shadow-sm border">
-            <div className="w-20 h-20 bg-black relative">
-              {/* Simple QR code pattern using CSS */}
-              <div className="absolute inset-0 bg-black">
-                {/* Corner squares */}
-                <div className="absolute top-0 left-0 w-6 h-6 bg-black">
-                  <div className="absolute top-1 left-1 w-4 h-4 bg-white">
-                    <div className="absolute top-1 left-1 w-2 h-2 bg-black"></div>
-                  </div>
+            <div className="w-20 h-20 bg-white relative grid grid-cols-10 grid-rows-10 gap-0">
+              {/* Create a more realistic QR code pattern */}
+              {[
+                // Row 1
+                1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
+                // Row 2
+                1, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+                // Row 3
+                1, 0, 1, 1, 1, 0, 1, 1, 1, 0,
+                // Row 4
+                1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
+                // Row 5
+                1, 0, 1, 1, 1, 0, 1, 1, 0, 0,
+                // Row 6
+                1, 0, 0, 0, 0, 0, 1, 0, 1, 1,
+                // Row 7
+                1, 1, 1, 1, 1, 1, 1, 0, 1, 0,
+                // Row 8
+                0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+                // Row 9
+                1, 0, 1, 1, 0, 1, 1, 1, 0, 1,
+                // Row 10
+                1, 1, 0, 1, 1, 0, 1, 0, 1, 1,
+              ].map((cell, index) => (
+                <div
+                  key={index}
+                  className={`w-2 h-2 ${cell === 1 ? "bg-black" : "bg-white"}`}
+                />
+              ))}
+
+              {/* Corner detection patterns */}
+              <div className="absolute top-0 left-0 w-6 h-6 bg-black">
+                <div className="absolute top-1 left-1 w-4 h-4 bg-white">
+                  <div className="absolute top-1 left-1 w-2 h-2 bg-black"></div>
                 </div>
-                <div className="absolute top-0 right-0 w-6 h-6 bg-black">
-                  <div className="absolute top-1 right-1 w-4 h-4 bg-white">
-                    <div className="absolute top-1 right-1 w-2 h-2 bg-black"></div>
-                  </div>
+              </div>
+              <div className="absolute top-0 right-0 w-6 h-6 bg-black">
+                <div className="absolute top-1 right-1 w-4 h-4 bg-white">
+                  <div className="absolute top-1 right-1 w-2 h-2 bg-black"></div>
                 </div>
-                <div className="absolute bottom-0 left-0 w-6 h-6 bg-black">
-                  <div className="absolute bottom-1 left-1 w-4 h-4 bg-white">
-                    <div className="absolute bottom-1 left-1 w-2 h-2 bg-black"></div>
-                  </div>
-                </div>
-
-                {/* Random pattern dots */}
-                <div className="absolute top-2 left-8 w-1 h-1 bg-white"></div>
-                <div className="absolute top-3 left-9 w-1 h-1 bg-white"></div>
-                <div className="absolute top-4 left-7 w-1 h-1 bg-white"></div>
-                <div className="absolute top-5 left-10 w-1 h-1 bg-white"></div>
-                <div className="absolute top-6 left-8 w-1 h-1 bg-white"></div>
-                <div className="absolute top-7 left-9 w-1 h-1 bg-white"></div>
-
-                <div className="absolute top-8 left-2 w-1 h-1 bg-white"></div>
-                <div className="absolute top-9 left-3 w-1 h-1 bg-white"></div>
-                <div className="absolute top-10 left-1 w-1 h-1 bg-white"></div>
-                <div className="absolute top-11 left-4 w-1 h-1 bg-white"></div>
-
-                <div className="absolute top-2 right-2 w-1 h-1 bg-white"></div>
-                <div className="absolute top-3 right-3 w-1 h-1 bg-white"></div>
-                <div className="absolute top-4 right-1 w-1 h-1 bg-white"></div>
-                <div className="absolute top-5 right-4 w-1 h-1 bg-white"></div>
-
-                <div className="absolute bottom-2 right-2 w-1 h-1 bg-white"></div>
-                <div className="absolute bottom-3 right-3 w-1 h-1 bg-white"></div>
-                <div className="absolute bottom-4 right-1 w-1 h-1 bg-white"></div>
-                <div className="absolute bottom-5 right-4 w-1 h-1 bg-white"></div>
-
-                {/* Middle pattern */}
-                <div className="absolute top-8 left-8 w-4 h-4">
-                  <div className="w-1 h-1 bg-white absolute top-0 left-0"></div>
-                  <div className="w-1 h-1 bg-white absolute top-0 right-0"></div>
-                  <div className="w-1 h-1 bg-white absolute bottom-0 left-0"></div>
-                  <div className="w-1 h-1 bg-white absolute bottom-0 right-0"></div>
-                  <div className="w-2 h-2 bg-white absolute top-1 left-1"></div>
+              </div>
+              <div className="absolute bottom-0 left-0 w-6 h-6 bg-black">
+                <div className="absolute bottom-1 left-1 w-4 h-4 bg-white">
+                  <div className="absolute bottom-1 left-1 w-2 h-2 bg-black"></div>
                 </div>
               </div>
             </div>
