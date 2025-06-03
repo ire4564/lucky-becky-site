@@ -176,9 +176,10 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                     {/* Main CTA Button */}
                     <Button
                       size="lg"
-                      className="w-full bg-gray-900 hover:bg-gray-800 text-white py-4 text-lg font-medium rounded-lg"
+                      className="w-full bg-gray-900 hover:bg-gray-800 text-white text-lg font-medium rounded-lg"
+                      style={{ padding: "32px" }}
                     >
-                      후원하기
+                      잘 읽었어요
                     </Button>
                   </div>
                 </div>
