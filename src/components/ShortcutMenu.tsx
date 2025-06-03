@@ -13,7 +13,7 @@ import Link from "next/link";
 const shortcuts = [
   {
     id: 1,
-    title: "Solving",
+    title: "문제해결",
     icon: Brain,
     bgColor: "bg-gradient-to-br from-amber-300 to-amber-400",
     hoverColor: "hover:from-amber-400 hover:to-amber-500",
@@ -22,7 +22,7 @@ const shortcuts = [
   },
   {
     id: 2,
-    title: "Projects",
+    title: "프로젝트",
     icon: FolderOpen,
     bgColor: "bg-gradient-to-br from-emerald-300 to-emerald-400",
     hoverColor: "hover:from-emerald-400 hover:to-emerald-500",
@@ -31,7 +31,7 @@ const shortcuts = [
   },
   {
     id: 3,
-    title: "Philosophy",
+    title: "철학",
     icon: Lightbulb,
     bgColor: "bg-gradient-to-br from-blue-300 to-blue-400",
     hoverColor: "hover:from-blue-400 hover:to-blue-500",
@@ -40,7 +40,7 @@ const shortcuts = [
   },
   {
     id: 4,
-    title: "Toolbox",
+    title: "유용한 정보",
     icon: Wrench,
     bgColor: "bg-gradient-to-br from-orange-300 to-orange-400",
     hoverColor: "hover:from-orange-400 hover:to-orange-500",
@@ -49,7 +49,7 @@ const shortcuts = [
   },
   {
     id: 5,
-    title: "Resume",
+    title: "이력서",
     icon: FileText,
     bgColor: "bg-gradient-to-br from-purple-400 to-purple-500",
     hoverColor: "hover:from-purple-500 hover:to-purple-600",
@@ -58,7 +58,7 @@ const shortcuts = [
   },
   {
     id: 6,
-    title: "Github",
+    title: "코드 저장소",
     icon: Github,
     bgColor: "bg-gradient-to-br from-gray-600 to-gray-700",
     hoverColor: "hover:from-gray-700 hover:to-gray-800",
