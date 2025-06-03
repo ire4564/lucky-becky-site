@@ -101,38 +101,11 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                       </div>
                     </div>
 
-                    {/* Title */}
-                    <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-8 leading-tight">
-                      {post.title}
-                    </h1>
-
-                    {/* Funding Progress */}
-                    <div className="space-y-6 mb-8">
-                      {/* Current Amount */}
-                      <div>
-                        <div className="text-sm text-gray-600 mb-1">
-                          모인금액
-                        </div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-bold text-gray-900">
-                            {fundingData.currentAmount.toLocaleString()}
-                          </span>
-                          <span className="text-lg text-gray-600">원</span>
-                          <span className="text-xl font-bold text-red-500">
-                            {fundingData.progress}%
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Supporters */}
-                      <div>
-                        <div className="text-sm text-gray-600 mb-1">후원자</div>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-3xl font-bold text-gray-900">
-                            {fundingData.supporters}
-                          </span>
-                          <span className="text-lg text-gray-600">명</span>
-                        </div>
+                    {/* Author Information */}
+                    <div className="space-y-4 mb-8">
+                      <div className="flex justify-between items-center py-2 mt-4">
+                        <span className="text-gray-600">작성자</span>
+                        <span className="font-medium">DOHEE KIM</span>
                       </div>
                     </div>
 
