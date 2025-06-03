@@ -93,14 +93,16 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                   <div className="p-8 lg:p-12 flex flex-col">
                     {/* Status Badge */}
                     <div className="flex items-center gap-2 mb-6">
-                      <div className="flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                        🎁 {fundingData.status}
-                        <span className="bg-white bg-opacity-20 rounded-full w-4 h-4 flex items-center justify-center text-xs">
-                          ⓘ
+                      <div
+                        className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
+                        style={{ backgroundColor: "rgba(207, 207, 207, 1)" }}
+                      >
+                        <span>🎁 </span>
+                        <span style={{ color: "rgba(97, 97, 97, 1)" }}>
+                          Frontend
                         </span>
                       </div>
                     </div>
-
                     {/* Author Information */}
                     <div className="space-y-4 mb-8">
                       <div className="flex justify-between items-center py-2 mt-4">
