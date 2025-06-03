@@ -9,9 +9,9 @@ import Autoplay from "embla-carousel-autoplay";
 const lightingProducts = [
   {
     id: 1,
-    title: "축복과 길운을 태운",
-    subtitle: "빛나는 꽃가마",
-    description: "번영을 기원하는 전통 조명",
+    title: "2025 올해의 내가",
+    subtitle: "도전한 것들에 대해서",
+    description: "우당탕탕 사이드 프로젝트 출시기",
     image: "/images/traditional-lamp-1.jpg",
     background: "from-amber-900 via-yellow-800 to-orange-900",
   },
