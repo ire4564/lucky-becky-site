@@ -12,11 +12,9 @@ import {
   Star,
   TrendingUp,
   Users,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { Badge } from "../components/Badge";
 import { BlogSidebar } from "../components/BlogSidebar";
 import { Button } from "../components/Button";
