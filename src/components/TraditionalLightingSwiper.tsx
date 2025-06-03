@@ -128,23 +128,6 @@ export function TraditionalLightingSwiper() {
 
                         {/* Inner glow */}
                         <div className="absolute inset-2 bg-gradient-to-b from-yellow-300 via-yellow-400 to-amber-300 rounded opacity-90"></div>
-
-                        {/* Traditional lattice pattern */}
-                        <div className="absolute inset-3 border border-yellow-400/60 rounded">
-                          {/* Horizontal lines */}
-                          <div className="absolute top-2 left-0 right-0 h-px bg-yellow-400/60"></div>
-                          <div className="absolute top-6 left-0 right-0 h-px bg-yellow-400/60"></div>
-                          <div className="absolute bottom-6 left-0 right-0 h-px bg-yellow-400/60"></div>
-                          <div className="absolute bottom-2 left-0 right-0 h-px bg-yellow-400/60"></div>
-                          {/* Vertical lines */}
-                          <div className="absolute left-2 top-0 bottom-0 w-px bg-yellow-400/60"></div>
-                          <div className="absolute left-6 top-0 bottom-0 w-px bg-yellow-400/60"></div>
-                          <div className="absolute right-6 top-0 bottom-0 w-px bg-yellow-400/60"></div>
-                          <div className="absolute right-2 top-0 bottom-0 w-px bg-yellow-400/60"></div>
-                          {/* Decorative patterns */}
-                          <div className="absolute top-3 left-3 w-3 h-3 border border-yellow-400/70 rotate-45"></div>
-                          <div className="absolute top-3 right-3 w-3 h-3 border border-yellow-400/70 rotate-45"></div>
-                        </div>
                       </div>
                     </div>
 
