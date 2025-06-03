@@ -182,26 +182,26 @@ export function TraditionalLightingSwiper() {
       {/* Navigation Controls */}
       <div className="absolute bottom-6 right-6 flex items-center gap-3 z-20">
         {/* Slide Counter */}
-        <div className="bg-amber-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
+        <div className="bg-amber-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium border border-amber-800/50">
           {currentSlide + 1} / {lightingProducts.length}
         </div>
 
         {/* Previous Button */}
         <button
           onClick={scrollPrev}
-          className="w-12 h-12 bg-amber-900/70 hover:bg-amber-900/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group"
+          className="w-12 h-12 bg-amber-900/80 hover:bg-amber-900 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group border border-amber-800/50 shadow-lg"
           aria-label="이전 슬라이드"
         >
-          <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
         </button>
 
         {/* Next Button */}
         <button
           onClick={scrollNext}
-          className="w-12 h-12 bg-amber-900/70 hover:bg-amber-900/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group"
+          className="w-12 h-12 bg-amber-900/80 hover:bg-amber-900 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-200 group border border-amber-800/50 shadow-lg"
           aria-label="다음 슬라이드"
         >
-          <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+          <ChevronRight className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
         </button>
       </div>
     </div>
