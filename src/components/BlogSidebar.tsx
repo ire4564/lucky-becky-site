@@ -80,11 +80,8 @@ export function BlogSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <BookOpen className="size-4" />
-                </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">TechBlog</span>
+                  <span className="truncate font-semibold">LUCKY BECKY</span>
                   <span className="truncate text-xs">Developer Hub</span>
                 </div>
               </Link>
