@@ -70,8 +70,34 @@ const userItems = [
   },
 ];
 
+// Map category names to display names without emojis
+const getCategoryDisplayName = (categoryName: string, categorySlug: string) => {
+  switch (categorySlug) {
+    case "frontend":
+      return "dev record";
+    case "backend":
+      return "Backend";
+    case "devops":
+      return "DevOps";
+    case "ai-ml":
+      return "AI/ML";
+    case "mobile":
+      return "Mobile";
+    default:
+      return categoryName;
+  }
+};
+
+// Filter out categories we don't want to show
+const shouldShowCategory = (categorySlug: string) => {
+  return !["web3"].includes(categorySlug);
+};
+
 export function BlogSidebar() {
   const pathname = usePathname();
+  const filteredCategories = blogCategories.filter((category) =>
+    shouldShowCategory(category.slug),
+  );
 
   return (
     <Sidebar>
@@ -96,18 +122,18 @@ export function BlogSidebar() {
           <SidebarGroupLabel>menu.</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {blogCategories.map((category) => (
+              {filteredCategories.map((category, index) => (
                 <SidebarMenuItem key={category.id}>
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === `/category/${category.slug}`}
                     className={
-                      category.name === "Frontend"
+                      category.slug === "frontend"
                         ? "justify-start flex-col p-2"
                         : ""
                     }
                   >
-                    {category.name === "Frontend" ? (
+                    {category.slug === "frontend" ? (
                       <div className="w-full">
                         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                           <div className="flex flex-col line-height-normal w-full ml-0 max-md:w-full max-md:ml-0">
@@ -115,13 +141,15 @@ export function BlogSidebar() {
                               href={`/category/${category.slug}`}
                               className="block"
                             >
-                              <span className="text-base mr-1">
-                                {category.icon}
+                              <span>
+                                {getCategoryDisplayName(
+                                  category.name,
+                                  category.slug,
+                                )}
                               </span>
-                              <span>dev record</span>
                               <Badge
                                 variant="secondary"
-                                className="ml-auto text-xs"
+                                className="ml-2 text-xs"
                               >
                                 {category.postCount}
                               </Badge>
@@ -131,9 +159,10 @@ export function BlogSidebar() {
                       </div>
                     ) : (
                       <Link href={`/category/${category.slug}`}>
-                        <span className="text-base mr-1">{category.icon}</span>
-                        <span>{category.name}</span>
-                        <Badge variant="secondary" className="ml-auto text-xs">
+                        <span>
+                          {getCategoryDisplayName(category.name, category.slug)}
+                        </span>
+                        <Badge variant="secondary" className="ml-2 text-xs">
                           {category.postCount}
                         </Badge>
                       </Link>
@@ -141,25 +170,6 @@ export function BlogSidebar() {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarSeparator />
-
-        {/* User Items */}
-        <SidebarGroup>
-          <SidebarGroupLabel>tags.</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/bookmarks"}>
-                  <Link href="/bookmarks">
-                    <span className="text-base pr-1">🔖</span>
-                    <span>Bookmarks</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
