@@ -30,11 +30,13 @@ export default function NotFound() {
                 Go Home
               </Link>
             </Button>
-            <Button variant="outline" asChild className="w-full">
-              <Link href="javascript:history.back()">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Go Back
-              </Link>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => window.history.back()}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Go Back
             </Button>
           </div>
         </CardContent>
