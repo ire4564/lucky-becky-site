@@ -144,7 +144,7 @@ export function BlogSidebar() {
                               href={`/category/${category.slug}`}
                               className="block"
                             >
-                              <span>
+                              <span style={{ color: "rgba(17, 17, 17, 1)" }}>
                                 {getCategoryDisplayName(
                                   category.name,
                                   category.slug,
@@ -164,9 +164,9 @@ export function BlogSidebar() {
                       <Link href={`/category/${category.slug}`}>
                         <span style={{ color: "rgba(17, 17, 17, 1)" }}>
                           {getCategoryDisplayName(category.name, category.slug)}
-                        <span style={{ color: 'rgba(17, 17, 17, 1)' }}>
-                          {getCategoryDisplayName(category.name, category.slug)}
                         </span>
+                        <Badge variant="secondary" className="ml-2 text-xs">
+                          {category.postCount}
                         </Badge>
                       </Link>
                     )}
@@ -199,6 +199,7 @@ export function BlogSidebar() {
               </div>
             </div>
           </div>
+
           {/* Scan Me Button */}
           <div className="relative">
             <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
