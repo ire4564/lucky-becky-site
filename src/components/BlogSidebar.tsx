@@ -101,18 +101,43 @@ export function BlogSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={pathname === `/category/${category.slug}`}
+                    className={
+                      category.name === "Frontend"
+                        ? "justify-start flex-col p-2"
+                        : ""
+                    }
                   >
-                    <Link href={`/category/${category.slug}`}>
-                      <span className="text-base mr-1">{category.icon}</span>
-                      <span>
-                        {category.name === "Frontend"
-                          ? "dev record"
-                          : category.name}
-                      </span>
-                      <Badge variant="secondary" className="ml-auto text-xs">
-                        {category.postCount}
-                      </Badge>
-                    </Link>
+                    {category.name === "Frontend" ? (
+                      <div className="w-full">
+                        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+                          <div className="flex flex-col line-height-normal w-full ml-0 max-md:w-full max-md:ml-0">
+                            <Link
+                              href={`/category/${category.slug}`}
+                              className="block"
+                            >
+                              <span className="text-base mr-1">
+                                {category.icon}
+                              </span>
+                              <span>dev record</span>
+                              <Badge
+                                variant="secondary"
+                                className="ml-auto text-xs"
+                              >
+                                {category.postCount}
+                              </Badge>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link href={`/category/${category.slug}`}>
+                        <span className="text-base mr-1">{category.icon}</span>
+                        <span>{category.name}</span>
+                        <Badge variant="secondary" className="ml-auto text-xs">
+                          {category.postCount}
+                        </Badge>
+                      </Link>
+                    )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
