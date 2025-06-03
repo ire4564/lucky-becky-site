@@ -29,15 +29,7 @@ export function Header({ onSearch }: HeaderProps) {
       <div className="container flex h-16 items-center px-4">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <BookOpen className="h-4 w-4 text-primary-foreground" />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold">TechBlog</h1>
-              <p className="text-xs text-muted-foreground">Developer Hub</p>
-            </div>
-          </Link>
+          <Link href="/" className="flex items-center gap-2"></Link>
         </div>
 
         {/* Search bar */}
