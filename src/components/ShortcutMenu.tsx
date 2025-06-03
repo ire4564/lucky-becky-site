@@ -69,8 +69,8 @@ const shortcuts = [
 
 export function ShortcutMenu() {
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-6 p-6">
+    <div className="w-full max-w-5xl mx-auto">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-8 p-6">
         {shortcuts.map((shortcut) => {
           const IconComponent = shortcut.icon;
           return (
@@ -82,25 +82,24 @@ export function ShortcutMenu() {
               {/* Icon Container */}
               <div
                 className={`
-                relative w-16 h-16 rounded-2xl shadow-lg transition-all duration-200
+                relative w-20 h-20 rounded-3xl shadow-md transition-all duration-300
                 ${shortcut.bgColor} ${shortcut.hoverColor}
                 flex items-center justify-center
-                group-hover:shadow-xl
+                group-hover:shadow-lg group-hover:-translate-y-1
               `}
               >
-                <IconComponent className="w-8 h-8 text-white" />
+                <IconComponent className="w-9 h-9 text-white drop-shadow-sm" />
 
-                {/* Notification Badge for some items */}
-                {(shortcut.title === "Problem Solving" ||
-                  shortcut.title === "Projects") && (
-                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+                {/* Notification Badge */}
+                {shortcut.hasNotification && (
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center shadow-md">
                     <span className="text-white text-xs font-bold">N</span>
                   </div>
                 )}
               </div>
 
               {/* Label */}
-              <span className="text-sm font-medium text-gray-700 text-center leading-tight group-hover:text-gray-900 transition-colors duration-200">
+              <span className="text-sm font-medium text-gray-800 text-center leading-tight group-hover:text-gray-900 transition-colors duration-200 max-w-20">
                 {shortcut.title}
               </span>
             </Link>
