@@ -12,9 +12,11 @@ import {
   Star,
   TrendingUp,
   Users,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Badge } from "../components/Badge";
 import { BlogSidebar } from "../components/BlogSidebar";
 import { Button } from "../components/Button";
@@ -28,6 +30,43 @@ import {
 import { Header } from "../components/Header";
 import { Separator } from "../components/Separator";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
+import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+
+// Hero banners data
+const heroBanners = [
+  {
+    id: 1,
+    title: "Welcome to LUCKY BECKY",
+    subtitle: "recording archive",
+    description:
+      "Discover the latest insights, tutorials, and best practices in software development. Join our community of developers sharing knowledge and building the future.",
+    background: "from-blue-600 via-purple-600 to-indigo-600",
+    buttonText: "Explore Articles",
+    buttonAction: "/featured",
+  },
+  {
+    id: 2,
+    title: "Frontend Development",
+    subtitle: "dev record",
+    description:
+      "Master modern frontend technologies with React, Vue, and Angular. Learn best practices for building responsive and performant web applications.",
+    background: "from-emerald-600 via-teal-600 to-cyan-600",
+    buttonText: "View Frontend",
+    buttonAction: "/category/frontend",
+  },
+  {
+    id: 3,
+    title: "Latest Trends",
+    subtitle: "trending topics",
+    description:
+      "Stay updated with the latest trends in technology, AI/ML, DevOps, and Web3. Don't miss out on the future of development.",
+    background: "from-orange-600 via-red-600 to-pink-600",
+    buttonText: "Trending Now",
+    buttonAction: "/trending",
+  },
+];
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,6 +75,32 @@ export function HomePage() {
   const trendingPosts = [...blogPosts]
     .sort((a, b) => b.views - a.views)
     .slice(0, 4);
+
+  // Embla carousel setup
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 4000, stopOnInteraction: false }),
+  ]);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCurrentSlide(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -78,30 +143,78 @@ export function HomePage() {
 
           <main className="flex-1 overflow-auto">
             <div className="container max-w-7xl mx-auto p-6 space-y-8">
-              {/* Hero Section */}
-              <section className="relative rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-8 text-white overflow-hidden">
-                <div className="relative z-10">
-                  <h1 className="text-4xl font-bold mb-4">
-                    Welcome to TechBlog
-                  </h1>
-                  <p className="text-xl text-blue-100 mb-6 max-w-2xl">
-                    Discover the latest insights, tutorials, and best practices
-                    in software development. Join our community of developers
-                    sharing knowledge and building the future.
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <Button
-                      size="lg"
-                      className="bg-white text-blue-600 hover:bg-blue-50"
-                    >
-                      Explore Articles
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+              {/* Hero Carousel Section */}
+              <section className="relative rounded-2xl overflow-hidden">
+                <div className="overflow-hidden" ref={emblaRef}>
+                  <div className="flex">
+                    {heroBanners.map((banner) => (
+                      <div key={banner.id} className="flex-[0_0_100%] min-w-0">
+                        <div
+                          className={`relative bg-gradient-to-r ${banner.background} p-8 text-white overflow-hidden min-h-[300px] flex items-center`}
+                        >
+                          <div className="relative z-10 w-full">
+                            <h1 className="text-4xl font-bold mb-2">
+                              {banner.title}
+                            </h1>
+                            <p className="text-lg text-white/80 mb-4 font-medium">
+                              {banner.subtitle}
+                            </p>
+                            <p className="text-xl text-white/90 mb-6 max-w-2xl">
+                              {banner.description}
+                            </p>
+                            <div className="flex flex-wrap gap-4">
+                              <Button
+                                size="lg"
+                                className="bg-white text-gray-800 hover:bg-white/90"
+                                asChild
+                              >
+                                <Link href={banner.buttonAction}>
+                                  {banner.buttonText}
+                                  <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </div>
+                          <div className="absolute inset-0 bg-black/20"></div>
+                          <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
+                          <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full"></div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-white/10 rounded-full"></div>
+
+                {/* Navigation arrows */}
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="h-6 w-6 text-white" />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-200"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="h-6 w-6 text-white" />
+                </button>
+
+                {/* Slide indicators */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                  {heroBanners.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => emblaApi?.scrollTo(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        currentSlide === index
+                          ? "bg-white w-8"
+                          : "bg-white/50 hover:bg-white/70"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </section>
 
               {/* Stats Section */}
