@@ -100,7 +100,7 @@ export function ShortcutMenu() {
 
               {/* Label */}
               <span
-              <span className="text-sm text-center leading-tight group-hover:text-gray-900 transition-colors duration-200 max-w-20" style={{ color: 'rgba(126, 130, 134, 1)' }}>
+                className="text-sm text-center leading-tight group-hover:text-gray-900 transition-colors duration-200 max-w-20"
                 style={{ color: "rgba(126, 130, 134, 1)" }}
               >
                 {shortcut.title}
