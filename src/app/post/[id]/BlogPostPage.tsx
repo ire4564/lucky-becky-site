@@ -124,19 +124,6 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                         </div>
                       </div>
 
-                      {/* Days Left */}
-                      <div>
-                        <div className="text-sm text-gray-600 mb-1">
-                          남은시간
-                        </div>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-3xl font-bold text-gray-900">
-                            {fundingData.daysLeft}
-                          </span>
-                          <span className="text-lg text-gray-600">일</span>
-                        </div>
-                      </div>
-
                       {/* Supporters */}
                       <div>
                         <div className="text-sm text-gray-600 mb-1">후원자</div>
