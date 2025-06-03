@@ -96,12 +96,11 @@ export function HomePage() {
               <section className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                      <Star className="h-6 w-6 text-yellow-500" />
-                      Featured Articles
+                    <h2 className="text-2xl font-bold gap-2">
+                      문제를 만들고 해결하는 과정
                     </h2>
                     <p className="text-muted-foreground">
-                      Handpicked articles from our top contributors
+                      이 세상에 필요한 것들은 너무 많다
                     </p>
                   </div>
                   <Button variant="outline" asChild>
