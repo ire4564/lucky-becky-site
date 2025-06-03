@@ -174,6 +174,78 @@ export function BlogSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter>
+        <div className="flex flex-col items-center justify-center p-4 space-y-3">
+          {/* QR Code */}
+          <div className="bg-white p-3 rounded-lg shadow-sm border">
+            <div className="w-20 h-20 bg-black relative">
+              {/* Simple QR code pattern using CSS */}
+              <div className="absolute inset-0 bg-black">
+                {/* Corner squares */}
+                <div className="absolute top-0 left-0 w-6 h-6 bg-black">
+                  <div className="absolute top-1 left-1 w-4 h-4 bg-white">
+                    <div className="absolute top-1 left-1 w-2 h-2 bg-black"></div>
+                  </div>
+                </div>
+                <div className="absolute top-0 right-0 w-6 h-6 bg-black">
+                  <div className="absolute top-1 right-1 w-4 h-4 bg-white">
+                    <div className="absolute top-1 right-1 w-2 h-2 bg-black"></div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 w-6 h-6 bg-black">
+                  <div className="absolute bottom-1 left-1 w-4 h-4 bg-white">
+                    <div className="absolute bottom-1 left-1 w-2 h-2 bg-black"></div>
+                  </div>
+                </div>
+
+                {/* Random pattern dots */}
+                <div className="absolute top-2 left-8 w-1 h-1 bg-white"></div>
+                <div className="absolute top-3 left-9 w-1 h-1 bg-white"></div>
+                <div className="absolute top-4 left-7 w-1 h-1 bg-white"></div>
+                <div className="absolute top-5 left-10 w-1 h-1 bg-white"></div>
+                <div className="absolute top-6 left-8 w-1 h-1 bg-white"></div>
+                <div className="absolute top-7 left-9 w-1 h-1 bg-white"></div>
+
+                <div className="absolute top-8 left-2 w-1 h-1 bg-white"></div>
+                <div className="absolute top-9 left-3 w-1 h-1 bg-white"></div>
+                <div className="absolute top-10 left-1 w-1 h-1 bg-white"></div>
+                <div className="absolute top-11 left-4 w-1 h-1 bg-white"></div>
+
+                <div className="absolute top-2 right-2 w-1 h-1 bg-white"></div>
+                <div className="absolute top-3 right-3 w-1 h-1 bg-white"></div>
+                <div className="absolute top-4 right-1 w-1 h-1 bg-white"></div>
+                <div className="absolute top-5 right-4 w-1 h-1 bg-white"></div>
+
+                <div className="absolute bottom-2 right-2 w-1 h-1 bg-white"></div>
+                <div className="absolute bottom-3 right-3 w-1 h-1 bg-white"></div>
+                <div className="absolute bottom-4 right-1 w-1 h-1 bg-white"></div>
+                <div className="absolute bottom-5 right-4 w-1 h-1 bg-white"></div>
+
+                {/* Middle pattern */}
+                <div className="absolute top-8 left-8 w-4 h-4">
+                  <div className="w-1 h-1 bg-white absolute top-0 left-0"></div>
+                  <div className="w-1 h-1 bg-white absolute top-0 right-0"></div>
+                  <div className="w-1 h-1 bg-white absolute bottom-0 left-0"></div>
+                  <div className="w-1 h-1 bg-white absolute bottom-0 right-0"></div>
+                  <div className="w-2 h-2 bg-white absolute top-1 left-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Scan Me Button */}
+          <div className="relative">
+            <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
+              SCAN ME!
+            </button>
+            {/* Speech bubble tail */}
+            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2">
+              <div className="w-3 h-3 bg-black transform rotate-45"></div>
+            </div>
+          </div>
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }
