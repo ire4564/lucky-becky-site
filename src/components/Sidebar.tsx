@@ -182,6 +182,7 @@ const SidebarMenuButton = React.forwardRef<
   ) => {
     const Comp = asChild ? "div" : "button";
 
+    // ref를 타입 추론 가능한 형태로 정의
     return (
       <Comp
         ref={ref}
