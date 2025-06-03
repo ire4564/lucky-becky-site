@@ -3,10 +3,10 @@
 import { Badge } from "@/src/components/Badge";
 import { Button } from "@/src/components/Button";
 import { Input } from "@/src/components/Input";
-import { Bell, BookOpen, Search, TrendingUp, User } from "lucide-react";
+import { Moon, Search, Sun } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   onSearch?: (query: string) => void;
