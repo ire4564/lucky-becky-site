@@ -12,16 +12,13 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
 } from "@/src/components/Sidebar";
 import { blogCategories } from "@/src/lib/blog-data";
 import {
   BarChart3,
   Bookmark,
-  BookOpen,
   Calendar,
   Home,
-  Settings,
   Star,
   TrendingUp,
   Users,
@@ -105,7 +102,9 @@ export function BlogSidebar() {
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">LUCKY BECKY</span>
+                  <span className="truncate font-bold text-[24px]">
+                    LUCKYBECKY
+                  </span>
                   <span
                     className="truncate text-xs"
                     style={{ color: "rgba(119, 119, 119, 1)" }}
@@ -122,7 +121,7 @@ export function BlogSidebar() {
       <SidebarContent>
         {/* Categories */}
         <SidebarGroup>
-          <SidebarGroupLabel>menu.</SidebarGroupLabel>
+          <SidebarGroupLabel>menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {filteredCategories.map((category, index) => (

@@ -1,10 +1,8 @@
 "use client";
 
-import { Badge } from "@/src/components/Badge";
 import { Button } from "@/src/components/Button";
 import { Input } from "@/src/components/Input";
 import { Moon, Search, Sun } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -53,20 +51,15 @@ export function Header({ onSearch }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center px-4">
-        {/* Logo */}
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2"></Link>
-        </div>
-
+      <div className="container flex h-16 items-center px-4 justify-between">
         {/* Search bar */}
         <div className="flex-1 max-w-md mx-4">
           <form onSubmit={handleSearch} className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute  left-3 top-3 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search articles..."
-              className="pl-8 h-9"
+              placeholder="찾고 있는 것이 있나요?"
+              className="pl-8 h-10"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

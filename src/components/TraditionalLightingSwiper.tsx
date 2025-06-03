@@ -1,24 +1,23 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import useEmblaCarousel from "embla-carousel-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
-// 전통 조명 제품 데이터
 const lightingProducts = [
   {
     id: 1,
-    title: "2025 올해의 내가",
-    subtitle: "도전한 것들에 대해서",
+    title: "2025 올해",
+    subtitle: "도전한 것들",
     description: "우당탕탕 사이드 프로젝트 출시기",
     image: "/images/traditional-lamp-1.jpg",
     background: "from-amber-900 via-yellow-800 to-orange-900",
   },
   {
     id: 2,
-    title: "2025 나의 문제해결",
-    subtitle: "방식 생각하기",
+    title: "2025 나의",
+    subtitle: "문제해결 방식",
     description: "우당탕탕 사이드의 기록",
     image: "/images/traditional-lamp-2.jpg",
     background: "from-red-900 via-red-800 to-orange-900",
@@ -60,7 +59,7 @@ export function TraditionalLightingSwiper() {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
+    <div className="relative w-full h-[320px] rounded-2xl overflow-hidden">
       {/* Embla Carousel */}
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">

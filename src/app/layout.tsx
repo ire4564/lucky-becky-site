@@ -34,7 +34,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <link
+          as="style"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+          rel="stylesheet preload"
+        />
+      </head>
+      <body className="font-pretendard">
         <Providers>{children}</Providers>
       </body>
     </html>

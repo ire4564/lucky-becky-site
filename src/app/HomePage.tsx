@@ -5,14 +5,7 @@ import {
   blogPosts,
   getFeaturedPosts,
 } from "@/src/lib/blog-data";
-import {
-  ArrowRight,
-  BookOpen,
-  Clock,
-  Star,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Star, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Badge } from "../components/Badge";
@@ -20,16 +13,15 @@ import { BlogSidebar } from "../components/BlogSidebar";
 import { Button } from "../components/Button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "../components/Card";
 import { Header } from "../components/Header";
 import { Separator } from "../components/Separator";
+import { ShortcutMenu } from "../components/ShortcutMenu";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
 import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
-import { ShortcutMenu } from "../components/ShortcutMenu";
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -159,10 +151,9 @@ export function HomePage() {
 
               {/* Simple Recent Articles Grid */}
               <section className="space-y-6">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-8">
                   <h2 className="text-2xl font-bold flex items-center gap-2">
-                    <Clock className="h-6 w-6 text-blue-500" />
-                    Recent Articles
+                    최근 게시물
                   </h2>
                   <Button variant="outline" asChild>
                     <Link href="/recent">View All</Link>
