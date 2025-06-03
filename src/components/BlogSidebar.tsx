@@ -124,7 +124,7 @@ export function BlogSidebar() {
 
         {/* User Items */}
         <SidebarGroup>
-          <SidebarGroupLabel>lib.</SidebarGroupLabel>
+          <SidebarGroupLabel>tags.</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
