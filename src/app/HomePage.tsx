@@ -29,6 +29,7 @@ import { Header } from "../components/Header";
 import { Separator } from "../components/Separator";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
 import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
+import { ShortcutMenu } from "../components/ShortcutMenu";
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
