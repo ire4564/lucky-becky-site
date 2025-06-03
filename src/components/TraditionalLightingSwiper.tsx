@@ -17,9 +17,9 @@ const lightingProducts = [
   },
   {
     id: 2,
-    title: "고궁의 우아함을",
-    subtitle: "담은 궁등",
-    description: "왕실의 품격을 담은 전통 궁등",
+    title: "2025 나의 문제해결",
+    subtitle: "방식 생각하기",
+    description: "우당탕탕 사이드의 기록",
     image: "/images/traditional-lamp-2.jpg",
     background: "from-red-900 via-red-800 to-orange-900",
   },
