@@ -91,30 +91,9 @@ export function BlogSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
-        {/* Main Navigation */}
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {mainNavItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url}>
-                    <Link href={item.url}>
-                      <item.icon />
-                    </Link>
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarSeparator />
-
         {/* Categories */}
         <SidebarGroup>
-          <SidebarGroupLabel>Categories</SidebarGroupLabel>
+          <SidebarGroupLabel>menu.</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {blogCategories.map((category) => (
@@ -125,7 +104,11 @@ export function BlogSidebar() {
                   >
                     <Link href={`/category/${category.slug}`}>
                       <span className="text-base mr-1">{category.icon}</span>
-                      <span>{category.name}</span>
+                      <span>
+                        {category.name === "Frontend"
+                          ? "dev record"
+                          : category.name}
+                      </span>
                       <Badge variant="secondary" className="ml-auto text-xs">
                         {category.postCount}
                       </Badge>
@@ -141,19 +124,17 @@ export function BlogSidebar() {
 
         {/* User Items */}
         <SidebarGroup>
-          <SidebarGroupLabel>Library</SidebarGroupLabel>
+          <SidebarGroupLabel>lib.</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {userItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url}>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={pathname === "/bookmarks"}>
+                  <Link href="/bookmarks">
+                    <span className="text-base pr-1">🔖</span>
+                    <span>Bookmarks</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
