@@ -13,7 +13,7 @@ import Link from "next/link";
 const shortcuts = [
   {
     id: 1,
-    title: "Problem Solving",
+    title: "Solving",
     icon: Brain,
     bgColor: "bg-gradient-to-br from-amber-300 to-amber-400",
     hoverColor: "hover:from-amber-400 hover:to-amber-500",
@@ -70,7 +70,7 @@ const shortcuts = [
 export function ShortcutMenu() {
   return (
     <div className="w-full max-w-5xl mx-auto">
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-8 p-6">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-8 p-6 mb-4">
         {shortcuts.map((shortcut) => {
           const IconComponent = shortcut.icon;
           return (
