@@ -67,10 +67,10 @@ export function TraditionalLightingSwiper() {
           {lightingProducts.map((product) => (
             <div key={product.id} className="flex-[0_0_100%] min-w-0 relative">
               {/* Background matching the reference image */}
-              <div className="h-full bg-gradient-to-br from-amber-200 via-orange-300 to-amber-400 relative overflow-hidden">
-                {/* Wooden surface at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-700 via-amber-600 to-transparent"></div>
-
+              <div className="h-full bg-gradient-to-br from-amber-700 via-amber-600 to-amber-800 relative overflow-hidden">
+                {/* Wooden table surface */}
+                <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-amber-900 via-amber-800 to-amber-700"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 opacity-60"></div>
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex items-center px-12">
                   {/* Left Text Content */}
