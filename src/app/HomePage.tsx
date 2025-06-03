@@ -31,42 +31,6 @@ import { Header } from "../components/Header";
 import { Separator } from "../components/Separator";
 import { SidebarInset, SidebarProvider } from "../components/Sidebar";
 import { TraditionalLightingSwiper } from "../components/TraditionalLightingSwiper";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-
-// Hero banners data
-const heroBanners = [
-  {
-    id: 1,
-    title: "Welcome to LUCKY BECKY",
-    subtitle: "recording archive",
-    description:
-      "Discover the latest insights, tutorials, and best practices in software development. Join our community of developers sharing knowledge and building the future.",
-    background: "from-blue-600 via-purple-600 to-indigo-600",
-    buttonText: "Explore Articles",
-    buttonAction: "/featured",
-  },
-  {
-    id: 2,
-    title: "Frontend Development",
-    subtitle: "dev record",
-    description:
-      "Master modern frontend technologies with React, Vue, and Angular. Learn best practices for building responsive and performant web applications.",
-    background: "from-emerald-600 via-teal-600 to-cyan-600",
-    buttonText: "View Frontend",
-    buttonAction: "/category/frontend",
-  },
-  {
-    id: 3,
-    title: "Latest Trends",
-    subtitle: "trending topics",
-    description:
-      "Stay updated with the latest trends in technology, AI/ML, DevOps, and Web3. Don't miss out on the future of development.",
-    background: "from-orange-600 via-red-600 to-pink-600",
-    buttonText: "Trending Now",
-    buttonAction: "/trending",
-  },
-];
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -75,32 +39,6 @@ export function HomePage() {
   const trendingPosts = [...blogPosts]
     .sort((a, b) => b.views - a.views)
     .slice(0, 4);
-
-  // Embla carousel setup
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 4000, stopOnInteraction: false }),
-  ]);
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setCurrentSlide(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
