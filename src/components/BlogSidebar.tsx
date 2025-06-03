@@ -108,7 +108,12 @@ export function BlogSidebar() {
               <Link href="/">
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">LUCKY BECKY</span>
-                  <span className="truncate text-xs">recording archive</span>
+                  <span
+                    className="truncate text-xs"
+                    style={{ color: "rgba(119, 119, 119, 1)" }}
+                  >
+                    마음껏 구경하고 생각해보세요
+                  </span>
                 </div>
               </Link>
             </SidebarMenuButton>
