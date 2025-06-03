@@ -74,15 +74,13 @@ const userItems = [
 const getCategoryDisplayName = (categoryName: string, categorySlug: string) => {
   switch (categorySlug) {
     case "frontend":
-      return "dev record";
+      return "사이드 프로젝트";
     case "backend":
-      return "Backend";
+      return "어떻게 해결했는가";
     case "devops":
-      return "DevOps";
+      return "어떤 생각을 할까";
     case "ai-ml":
-      return "AI/ML";
-    case "mobile":
-      return "Mobile";
+      return "유용한 경험 모으기";
     default:
       return categoryName;
   }
