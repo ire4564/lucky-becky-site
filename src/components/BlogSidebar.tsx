@@ -179,130 +179,126 @@ export function BlogSidebar() {
         <div className="flex flex-col items-center justify-center p-4 space-y-3">
           {/* QR Code */}
           <div className="bg-white p-2 rounded-lg shadow-sm border">
-            <div className="w-24 h-24 bg-white relative">
-              {/* More detailed QR code pattern using individual pixels */}
-              <div className="w-full h-full relative">
-                {/* Create a 21x21 grid pattern using absolute positioning for precise control */}
-                <div className="absolute inset-0">
-                  {/* Top-left corner pattern */}
-                  <div className="absolute top-0 left-0 w-7 h-7 bg-black">
-                    <div className="absolute top-1 left-1 w-5 h-5 bg-white">
-                      <div className="absolute top-1 left-1 w-3 h-3 bg-black"></div>
-                    </div>
-                  </div>
+            <div className="w-20 h-20 bg-white relative">
+              <svg
+                width="80"
+                height="80"
+                viewBox="0 0 80 80"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* QR Code SVG pattern matching the reference image */}
 
-                  {/* Top-right corner pattern */}
-                  <div className="absolute top-0 right-0 w-7 h-7 bg-black">
-                    <div className="absolute top-1 right-1 w-5 h-5 bg-white">
-                      <div className="absolute top-1 right-1 w-3 h-3 bg-black"></div>
-                    </div>
-                  </div>
+                {/* Corner detection patterns */}
+                <rect x="0" y="0" width="24" height="24" fill="black" />
+                <rect x="4" y="4" width="16" height="16" fill="white" />
+                <rect x="8" y="8" width="8" height="8" fill="black" />
 
-                  {/* Bottom-left corner pattern */}
-                  <div className="absolute bottom-0 left-0 w-7 h-7 bg-black">
-                    <div className="absolute bottom-1 left-1 w-5 h-5 bg-white">
-                      <div className="absolute bottom-1 left-1 w-3 h-3 bg-black"></div>
-                    </div>
-                  </div>
+                <rect x="56" y="0" width="24" height="24" fill="black" />
+                <rect x="60" y="4" width="16" height="16" fill="white" />
+                <rect x="64" y="8" width="8" height="8" fill="black" />
 
-                  {/* Timing patterns */}
-                  <div className="absolute top-6 left-8 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-6 left-9 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-6 left-10 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-6 left-11 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-6 left-12 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-6 left-13 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-6 left-14 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-6 left-15 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-6 left-16 w-0.5 h-0.5 bg-black"></div>
+                <rect x="0" y="56" width="24" height="24" fill="black" />
+                <rect x="4" y="60" width="16" height="16" fill="white" />
+                <rect x="8" y="64" width="8" height="8" fill="black" />
 
-                  {/* Data patterns - creating a complex pattern */}
-                  <div className="absolute top-8 left-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 left-3 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-8 left-4 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 left-5 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 left-8 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-8 left-9 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 left-10 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 left-11 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-8 left-12 w-0.5 h-0.5 bg-black"></div>
+                {/* Timing patterns */}
+                <rect x="28" y="24" width="4" height="4" fill="black" />
+                <rect x="36" y="24" width="4" height="4" fill="black" />
+                <rect x="44" y="24" width="4" height="4" fill="black" />
+                <rect x="52" y="24" width="4" height="4" fill="black" />
 
-                  <div className="absolute top-9 left-1 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-9 left-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-9 left-3 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-9 left-4 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-9 left-8 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-9 left-9 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-9 left-10 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-9 left-11 w-0.5 h-0.5 bg-black"></div>
+                <rect x="24" y="28" width="4" height="4" fill="black" />
+                <rect x="24" y="36" width="4" height="4" fill="black" />
+                <rect x="24" y="44" width="4" height="4" fill="black" />
+                <rect x="24" y="52" width="4" height="4" fill="black" />
 
-                  <div className="absolute top-10 left-1 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 left-2 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-10 left-3 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 left-4 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 left-5 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-10 left-8 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-10 left-9 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 left-10 w-0.5 h-0.5 bg-black"></div>
+                {/* Data patterns - creating a complex realistic pattern */}
+                <rect x="32" y="8" width="4" height="4" fill="black" />
+                <rect x="40" y="8" width="4" height="4" fill="black" />
+                <rect x="48" y="8" width="4" height="4" fill="black" />
 
-                  <div className="absolute top-11 left-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-11 left-3 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-11 left-4 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-11 left-5 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-11 left-8 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-11 left-9 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-11 left-10 w-0.5 h-0.5 bg-black"></div>
+                <rect x="28" y="32" width="4" height="4" fill="black" />
+                <rect x="32" y="32" width="4" height="4" fill="white" />
+                <rect x="36" y="32" width="4" height="4" fill="black" />
+                <rect x="40" y="32" width="4" height="4" fill="white" />
+                <rect x="44" y="32" width="4" height="4" fill="black" />
+                <rect x="48" y="32" width="4" height="4" fill="black" />
+                <rect x="52" y="32" width="4" height="4" fill="white" />
 
-                  {/* Right side patterns */}
-                  <div className="absolute top-8 right-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-8 right-3 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-8 right-4 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-9 right-2 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-9 right-3 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-9 right-4 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-10 right-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 right-3 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-10 right-4 w-0.5 h-0.5 bg-white"></div>
+                <rect x="32" y="36" width="4" height="4" fill="white" />
+                <rect x="40" y="36" width="4" height="4" fill="black" />
+                <rect x="48" y="36" width="4" height="4" fill="white" />
 
-                  {/* Bottom patterns */}
-                  <div className="absolute bottom-2 left-8 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute bottom-2 left-9 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute bottom-2 left-10 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute bottom-2 left-11 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute bottom-2 left-12 w-0.5 h-0.5 bg-black"></div>
+                <rect x="28" y="40" width="4" height="4" fill="white" />
+                <rect x="36" y="40" width="4" height="4" fill="black" />
+                <rect x="44" y="40" width="4" height="4" fill="white" />
+                <rect x="52" y="40" width="4" height="4" fill="black" />
 
-                  <div className="absolute bottom-3 left-8 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute bottom-3 left-9 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute bottom-3 left-10 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute bottom-3 left-11 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute bottom-3 left-12 w-0.5 h-0.5 bg-white"></div>
+                <rect x="32" y="44" width="4" height="4" fill="black" />
+                <rect x="40" y="44" width="4" height="4" fill="white" />
+                <rect x="48" y="44" width="4" height="4" fill="black" />
 
-                  {/* Alignment pattern in bottom right */}
-                  <div className="absolute bottom-3 right-3 w-5 h-5 bg-black">
-                    <div className="absolute top-1 left-1 w-3 h-3 bg-white">
-                      <div className="absolute top-1 left-1 w-1 h-1 bg-black"></div>
-                    </div>
-                  </div>
+                <rect x="28" y="48" width="4" height="4" fill="black" />
+                <rect x="36" y="48" width="4" height="4" fill="white" />
+                <rect x="44" y="48" width="4" height="4" fill="black" />
+                <rect x="52" y="48" width="4" height="4" fill="white" />
 
-                  {/* Additional random patterns for realism */}
-                  <div className="absolute top-12 left-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-12 left-3 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-12 left-4 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-12 left-5 w-0.5 h-0.5 bg-white"></div>
+                {/* Bottom patterns */}
+                <rect x="32" y="56" width="4" height="4" fill="white" />
+                <rect x="40" y="56" width="4" height="4" fill="black" />
+                <rect x="48" y="56" width="4" height="4" fill="white" />
 
-                  <div className="absolute top-13 left-2 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-13 left-3 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-13 left-4 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-13 left-5 w-0.5 h-0.5 bg-black"></div>
+                <rect x="28" y="60" width="4" height="4" fill="black" />
+                <rect x="36" y="60" width="4" height="4" fill="white" />
+                <rect x="44" y="60" width="4" height="4" fill="black" />
+                <rect x="52" y="60" width="4" height="4" fill="black" />
 
-                  <div className="absolute top-14 left-2 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-14 left-3 w-0.5 h-0.5 bg-white"></div>
-                  <div className="absolute top-14 left-4 w-0.5 h-0.5 bg-black"></div>
-                  <div className="absolute top-14 left-5 w-0.5 h-0.5 bg-white"></div>
-                </div>
-              </div>
+                <rect x="32" y="64" width="4" height="4" fill="black" />
+                <rect x="40" y="64" width="4" height="4" fill="white" />
+                <rect x="48" y="64" width="4" height="4" fill="white" />
+
+                <rect x="28" y="68" width="4" height="4" fill="white" />
+                <rect x="36" y="68" width="4" height="4" fill="black" />
+                <rect x="44" y="68" width="4" height="4" fill="white" />
+                <rect x="52" y="68" width="4" height="4" fill="black" />
+
+                <rect x="32" y="72" width="4" height="4" fill="black" />
+                <rect x="40" y="72" width="4" height="4" fill="black" />
+                <rect x="48" y="72" width="4" height="4" fill="white" />
+                <rect x="52" y="72" width="4" height="4" fill="black" />
+
+                {/* Right side patterns */}
+                <rect x="56" y="32" width="4" height="4" fill="black" />
+                <rect x="64" y="32" width="4" height="4" fill="white" />
+                <rect x="72" y="32" width="4" height="4" fill="black" />
+
+                <rect x="60" y="36" width="4" height="4" fill="white" />
+                <rect x="68" y="36" width="4" height="4" fill="black" />
+                <rect x="76" y="36" width="4" height="4" fill="white" />
+
+                <rect x="56" y="40" width="4" height="4" fill="black" />
+                <rect x="64" y="40" width="4" height="4" fill="black" />
+                <rect x="72" y="40" width="4" height="4" fill="white" />
+
+                <rect x="60" y="44" width="4" height="4" fill="white" />
+                <rect x="68" y="44" width="4" height="4" fill="white" />
+                <rect x="76" y="44" width="4" height="4" fill="black" />
+
+                <rect x="56" y="48" width="4" height="4" fill="black" />
+                <rect x="64" y="48" width="4" height="4" fill="white" />
+                <rect x="72" y="48" width="4" height="4" fill="black" />
+
+                {/* Alignment pattern */}
+                <rect x="60" y="60" width="16" height="16" fill="black" />
+                <rect x="64" y="64" width="8" height="8" fill="white" />
+                <rect x="68" y="68" width="4" height="4" fill="black" />
+              </svg>
             </div>
           </div>
+
+          {/* Scan Me Button */}
+          <div className="relative">
             <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
               SCAN ME!
             </button>
