@@ -75,11 +75,20 @@ export function TraditionalLightingSwiper() {
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex items-center gap-0.5 mx-3.5 my-0 -mb-1 px-12 pb-10">
                   {/* Left Text Content */}
-                  <div className="w-1/2 space-y-3 mr-3.5 -my-1.25">
-                    <h2 className="text-5xl font-bold text-white leading-tight tracking-wide">
+                  <div
+                    className="w-1/2 space-y-3 mr-3.5 -my-1.25"
+                    style={{ lineHeight: "42px" }}
+                  >
+                    <h2
+                      className="text-4xl font-bold text-white tracking-wide"
+                      style={{ fontSize: "42px", lineHeight: "42px" }}
+                    >
                       {product.title}
                     </h2>
-                    <h3 className="text-5xl font-bold text-white leading-tight tracking-wide mt-3">
+                    <h3
+                      className="text-4xl font-bold text-white tracking-wide mt-3"
+                      style={{ fontSize: "42px", lineHeight: "42px" }}
+                    >
                       {product.subtitle}
                     </h3>
                     <p className="text-lg text-white/90 font-medium mt-3 tracking-wide">
