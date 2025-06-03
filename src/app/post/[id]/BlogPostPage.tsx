@@ -183,27 +183,6 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                     </Button>
                   </div>
                 </div>
-
-                {/* Bottom Navigation Tabs */}
-                <div className="border-t">
-                  <div className="flex">
-                    <button className="px-6 py-4 text-sm font-medium text-gray-900 border-b-2 border-gray-900 bg-white">
-                      프로젝트 계획
-                    </button>
-                    <button className="px-6 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 bg-gray-50">
-                      업데이트
-                    </button>
-                    <button className="px-6 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 bg-gray-50">
-                      커뮤니티 {Math.floor(post.views / 20)}
-                    </button>
-                    <button className="px-6 py-4 text-sm font-medium text-gray-600 hover:text-gray-900 bg-gray-50 relative">
-                      후기
-                      <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                        N
-                      </span>
-                    </button>
-                  </div>
-                </div>
               </div>
 
               {/* Project Content */}
