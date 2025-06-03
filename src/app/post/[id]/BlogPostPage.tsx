@@ -173,23 +173,6 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex items-center gap-4 mb-8">
-                      <button className="flex flex-col items-center gap-1 p-2 hover:bg-gray-50 rounded-lg transition-colors">
-                        <Heart className="w-6 h-6 text-gray-600" />
-                        <span className="text-sm text-gray-600">
-                          {post.likes}
-                        </span>
-                      </button>
-
-                      <button className="flex flex-col items-center gap-1 p-2 hover:bg-gray-50 rounded-lg transition-colors">
-                        <Share2 className="w-6 h-6 text-gray-600" />
-                        <span className="text-sm text-gray-600">
-                          {Math.floor(post.likes / 3)}
-                        </span>
-                      </button>
-                    </div>
-
                     {/* Main CTA Button */}
                     <Button
                       size="lg"
