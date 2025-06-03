@@ -164,9 +164,9 @@ export function BlogSidebar() {
                       <Link href={`/category/${category.slug}`}>
                         <span style={{ color: "rgba(17, 17, 17, 1)" }}>
                           {getCategoryDisplayName(category.name, category.slug)}
+                        <span style={{ color: 'rgba(17, 17, 17, 1)' }}>
+                          {getCategoryDisplayName(category.name, category.slug)}
                         </span>
-                        <Badge variant="secondary" className="ml-2 text-xs">
-                          {category.postCount}
                         </Badge>
                       </Link>
                     )}
