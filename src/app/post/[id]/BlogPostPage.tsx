@@ -91,15 +91,21 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
 
                   {/* Right: Project Information */}
                   <div className="p-8 lg:p-12 flex flex-col">
-                    {/* Title and Description */}
-                    <div className="mb-8">
-                      <h2 className="text-2xl font-bold text-gray-900 leading-8 mb-2">
-                        프로젝트 소개,
-                        <br />
-                        여기는 제목을 적는 곳입니다
-                        <br />
-                      </h2>
-                      <div className="text-gray-700 leading-relaxed whitespace-pre-wrap mt-2">
+                    {/* Author and Date Information */}
+                    <div className="space-y-4 mb-8">
+                      <div className="flex justify-between items-center py-2">
+                        <span className="text-gray-600">작성자</span>
+                        <span className="font-medium">DOHEE KIM</span>
+                      </div>
+                      <div className="flex justify-between items-center py-2 mt-1">
+                        <span className="text-gray-600">작성일</span>
+                        <div className="text-right">
+                          <div className="font-medium">
+                            2024. 01. 15.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                         여기는 소제목을 적는 곳이에요 하나둘
                       </div>
                     </div>
