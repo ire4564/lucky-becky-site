@@ -91,23 +91,16 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
 
                   {/* Right: Project Information */}
                   <div className="p-8 lg:p-12 flex flex-col">
-                    {/* Status Badge */}
-                    <div className="flex items-center gap-2 mb-6">
-                      <div
-                        className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium"
-                        style={{ backgroundColor: "rgba(207, 207, 207, 1)" }}
-                      >
-                        <span>🎁 </span>
-                        <span style={{ color: "rgba(97, 97, 97, 1)" }}>
-                          Frontend
-                        </span>
-                      </div>
-                    </div>
-                    {/* Author Information */}
-                    <div className="space-y-4 mb-8">
-                      <div className="flex justify-between items-center py-2 mt-4">
-                        <span className="text-gray-600">작성자</span>
-                        <span className="font-medium">DOHEE KIM</span>
+                    {/* Title and Description */}
+                    <div className="mb-8">
+                      <h2 className="text-2xl font-bold text-gray-900 leading-8 mb-2">
+                        프로젝트 소개,
+                        <br />
+                        여기는 제목을 적는 곳입니다
+                        <br />
+                      </h2>
+                      <div className="text-gray-700 leading-relaxed whitespace-pre-wrap mt-2">
+                        여기는 소제목을 적는 곳이에요 하나둘
                       </div>
                     </div>
 
